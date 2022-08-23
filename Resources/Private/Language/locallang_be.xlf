@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2022-06-15UTC07:12:050">
+        <header>
+            <authorName>Nanna Ellegaard</authorName>
+            <authorEmail>nel@adm.ku.dk</authorEmail>
+        </header>
+        <body>
+        <trans-unit id="tab_name" resname="tab_name">
+            <source>KU</source>
+        </trans-unit>
+            <trans-unit id="title" resname="title">
+            <source>KU Phonebook</source>
+        </trans-unit>
+        <trans-unit id="description" resname="description">
+            <source>Hero banner with text overlay</source>
+        </trans-unit>
+        <trans-unit id="select_color" resname="select_color">
+            <source>Select KU color</source>
+        </trans-unit>
+        <trans-unit id="ku_color_red_header" resname="ku_color_red_header">
+            <source>KU red color family</source>
+        </trans-unit>
+        <trans-unit id="ku_color_red1" resname="ku_color_red1">
+            <source>Red light</source>
+        </trans-unit>
+        <trans-unit id="ku_color_red2" resname="ku_color_red2">
+            <source>Red medium</source>
+        </trans-unit>
+        <trans-unit id="ku_color_red3" resname="ku_color_red3">
+            <source>Red dark</source>
+        </trans-unit>
+        <trans-unit id="ku_color_blue_header" resname="ku_color_blue_header">
+            <source>KU blue color family</source>
+        </trans-unit>
+        <trans-unit id="ku_color_blue1" resname="ku_color_blue1">
+            <source>Blue light</source>
+        </trans-unit>
+        <trans-unit id="ku_color_blue2" resname="ku_color_blue2">
+            <source>Blue medium</source>
+        </trans-unit>
+        <trans-unit id="ku_color_blue3" resname="ku_color_blue3">
+            <source>Blue dark</source>
+        </trans-unit>
+        <trans-unit id="ku_color_teal_header" resname="ku_color_teal_header">
+            <source>KU teal color family</source>
+        </trans-unit>
+        <trans-unit id="ku_color_teal1" resname="ku_color_teal1">
+            <source>Teal light</source>
+        </trans-unit>
+        <trans-unit id="ku_color_teal2" resname="ku_color_teal2">
+            <source>Teal medium</source>
+        </trans-unit>
+        <trans-unit id="ku_color_teal3" resname="ku_color_teal3">
+            <source>Teal dark</source>
+        </trans-unit>
+        <trans-unit id="ku_color_green_header" resname="ku_color_green_header">
+            <source>KU green color family</source>
+        </trans-unit>
+        <trans-unit id="ku_color_green1" resname="ku_color_green1">
+            <source>Green light</source>
+        </trans-unit>
+        <trans-unit id="ku_color_green2" resname="ku_color_green2">
+            <source>Green medium</source>
+        </trans-unit>
+        <trans-unit id="ku_color_green3" resname="ku_color_green3">
+            <source>Green dark</source>
+        </trans-unit>
+        <trans-unit id="ku_color_grey_header" resname="ku_color_grey_header">
+            <source>KU grey color family</source>
+        </trans-unit>
+        <trans-unit id="ku_color_grey1" resname="ku_color_grey1">
+            <source>Grey light</source>
+        </trans-unit>
+        <trans-unit id="ku_color_grey2" resname="ku_color_grey2">
+            <source>Grey medium</source>
+        </trans-unit>
+        <trans-unit id="ku_color_grey3" resname="ku_color_grey3">
+            <source>Grey dark</source>
+        </trans-unit>
+        <trans-unit id="ku_color_light_header" resname="ku_color_light_header">
+            <source>KU white/yellow color family</source>
+        </trans-unit>
+        <trans-unit id="ku_color_light1" resname="ku_color_light1">
+            <source>White</source>
+        </trans-unit>
+        <trans-unit id="ku_color_light2" resname="ku_color_light2">
+            <source>Champagne</source>
+        </trans-unit>
+        <trans-unit id="ku_color_light3" resname="ku_color_light3">
+            <source>Yellow</source>
+        </trans-unit>
+        <trans-unit id="ku_button_title" resname="ku_button_title">
+            <source>Optional: Add button</source>
+        </trans-unit>
+        <trans-unit id="ku_button_desc" resname="ku_button_desc">
+            <source>Optional button with link</source>
+        </trans-unit>
+        <trans-unit id="ku_button_placeholder" resname="ku_button_placeholder">
+            <source>Add button text</source>
+        </trans-unit>
+        <trans-unit id="ku_button_link" resname="ku_button_link">
+            <source>Link for the button</source>
+        </trans-unit>
+        </body>
+    </file>
+</xliff>

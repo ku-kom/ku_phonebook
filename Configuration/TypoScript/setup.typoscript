@@ -1,0 +1,19 @@
+################################
+#### IMAGE BOX WITH OVERLAY ####
+################################
+tt_content.ku_phonebook =< lib.contentElement
+tt_content.ku_phonebook {
+	templateName = PhonebookSearch
+	templateRootPaths.10 = EXT:ku_phonebook/Resources/Private/Templates/ContentElements/
+	partialRootPaths {
+		10 = EXT:ku_phonebook/Resources/Private/Partials/ContentElements/
+	}
+
+	dataProcessing {
+		# Handle image upload:
+		10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
+		10 {
+			references.fieldName = image
+		}
+	}
+}

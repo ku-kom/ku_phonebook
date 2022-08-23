@@ -1,0 +1,41 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+<f:section name="Header" />
+<f:spaceless>
+    <f:section name="Main">
+        <f:render section="PhonebookSearch" arguments="{_all}" />
+    </f:section>
+</f:spaceless>
+
+<f:section name="PhonebookSearch">
+    <f:variable name="boxColor">{data.ku_color_family}</f:variable>
+    <f:variable name="imgExists">{f:if(condition: '{files.0}', else:'no-img', then:'with-img')}</f:variable>
+    <div class="image-with-overlay {imgExists}">
+        <f:if condition="{files.0}">
+            <f:then>
+                <f:render partial="Media/Type" arguments="{file: files.0, data: data, settings: settings, variants: variants}" />
+            </f:then>
+        </f:if>
+        <div class="image-with-overlay-textposition {data.header_position}">
+            <div class="image-with-overlay-box {boxColor}">
+                <h2 class="image-with-overlay-text"><span>{data.header}</span></h2>
+            </div>
+        </div>
+        <f:if condition="{data.ku_overlay_button_1} || {data.ku_overlay_button_2}">
+            <f:then>
+                <div class="overlay-buttons">
+                    <f:if condition="{data.ku_overlay_button_1}">
+                        <f:then>
+                            <f:link.typolink parameter="{data.ku_overlay_link_1}" class="btn btn-overlay">{data.ku_overlay_button_1}</f:link.typolink>
+                        </f:then>
+                    </f:if>
+                    <f:if condition="{data.ku_overlay_button_2}">
+                        <f:then>
+                            <f:link.typolink parameter="{data.ku_overlay_link_2}" class="btn btn-overlay">{data.ku_overlay_button_2}</f:link.typolink>
+                        </f:then>
+                    </f:if>
+                </div>
+            </f:then>
+        </f:if>
+    </div>
+</f:section>
