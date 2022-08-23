@@ -1,59 +1,30 @@
+
 <?php
+if (!defined('TYPO3_MODE')) { die('Access denied.'); }
 
-/*
- * This file is part of the package ku_phonebook.
- * For the full copyright and license information, please read the
- * LICENSE file that was distributed with this source code.
- */
+call_user_func(function () {
 
-defined('TYPO3_MODE') or die();
+	# Define extension key
+	$_EXTKEY = 'ku_phonebook';
 
-// KU Phonebook box custom select
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('tt_content', [
-    'ku_phonebook' => [
-        'exclude' => 0,
-        'label' => 'LLL:EXT:ku_phonebook/Resources/Private/Language/locallang_be.xlf:phonebook_label',
-        'config' => [
-            'type' => 'text',
-            'renderType' => 'input',
-            'size' => '20',
-            'eval' => 'null',
-            'placeholder' => 'LLL:EXT:ku_phonebook/Resources/Private/Language/locallang_be.xlf:phonebook_label',
-        ],
-    ],
-]);
+	# Should move code from ext_tables.php to here > To register plugin
+	\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+	    $_EXTKEY,
+	    'Pi1',
+	    'LLL:EXT:ku_phonebook/Resources/Private/Language/locallang_be.xlf:title'
+	);
 
-// KU Phonebook box CType select
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTcaSelectItem(
-    'tt_content',
-    'CType',
-    [
-        'LLL:EXT:ku_phonebook/Resources/Private/Language/locallang_be.xlf:title',
-        'ku_phonebook',
-        'ku-phonebook-icon',
-    ],
-    'image',
-    'after'
-);
+	# Prepare plugin's signature
+	$extensionName = strtolower(\TYPO3\CMS\Core\Utility\GeneralUtility::underscoredToUpperCamelCase($_EXTKEY)); 
+	$pluginName = strtolower('Pi1'); 
+	$pluginSignature = $extensionName.'_'.$pluginName; 
 
-// KU Phonebook palette
-$ku_phonebook = [
-    'showitem' => '
-    --palette--; LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xml:palette.general; general,header,header_position,ku_phonebook,
-    --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.appearance,
-    --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.frames;frames,
-    --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.appearanceLinks;appearanceLinks,
-    --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language,
-    --palette--;;language,
-    --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,
-    --palette--;;hidden,
-    --palette--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:palette.access;access,
-    --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:categories,
-    categories,
-    --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:notes,
-    rowDescription,
-    --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:extended,
-    ',
-];
+	# Add list_type to tt_content
+	$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
 
-$GLOBALS['TCA']['tt_content']['types']['ku_phonebook'] = $ku_phonebook;
+	# Add Flexform
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
+		$pluginSignature, 
+		'FILE:EXT:'.$_EXTKEY . '/Configuration/FlexForms/pi1_name.xml'
+	);
+});

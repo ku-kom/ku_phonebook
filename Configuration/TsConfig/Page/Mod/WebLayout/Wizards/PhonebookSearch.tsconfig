@@ -1,8 +1,8 @@
 // Add to Content element Wizard
 
 mod.wizards.newContentElement.wizardItems {
-   // Add to tab "Common"
-   common {
+   // Add to tab "Plugin"
+   plugins {
       elements {
          ku_phonebook {
             iconIdentifier = ku-image-with-overlay-icon
