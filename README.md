@@ -1,5 +1,5 @@
 Sitepackage for the project "KU Phonebook"
 ==============================================================
 
-Hero banner with text overlay
+KU Phonebook
 TYPO3 v. 11.5

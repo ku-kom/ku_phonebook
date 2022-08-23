@@ -13,7 +13,7 @@
             <source>KU Phonebook</source>
         </trans-unit>
         <trans-unit id="description" resname="description">
-            <source>Hero banner with text overlay</source>
+            <source>KU Phonebook</source>
         </trans-unit>
         <trans-unit id="select_color" resname="select_color">
             <source>Select KU color</source>
