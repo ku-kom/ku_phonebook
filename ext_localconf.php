@@ -14,4 +14,17 @@ defined('TYPO3') or die('Access denied.');
     @import \'EXT:ku_phonebook/Configuration/TsConfig/Page/All.tsconfig\'
 ');
 
-$GLOBALS['TYPO3_CONF_VARS']['FE']['eID_include']['ajax_page'] = \UniversityOfCopenhagen\KuPhonebook\Controller\MyEidController::class . '::methodName';
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+  'UniversityOfCopenhagen.KuPhonebook',
+  'Testing',
+  [
+      \UniversityOfCopenhagen\KuPhonebook\Controller\ExampleController::class => 'doSomething',               
+  ],
+  // non-cacheable actions
+  [
+    \UniversityOfCopenhagen\KuPhonebook\ExampleController::class => 'doSomething',
+  ]
+);
+
+// Register ajax call
+$TYPO3_CONF_VARS['FE']['eID_include']['ajaxCall'] = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('extension_key').'Classes/Ajax/EidDispatcher.php';

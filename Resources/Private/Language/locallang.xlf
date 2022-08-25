@@ -6,7 +6,12 @@
             <authorEmail>nel@adm.ku.dk</authorEmail>
         </header>
         <body>
-        
+        <trans-unit id="phonebook_label" resname="phonebook_label">
+            <source>KU directory of employees and students</source>
+        </trans-unit>
+        <trans-unit id="phonebook_placeholder" resname="phonebook_placeholder">
+            <source>Search by name, title, phone number or department</source>
+        </trans-unit>
         </body>
     </file>
 </xliff>

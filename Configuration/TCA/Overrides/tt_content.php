@@ -11,7 +11,8 @@ call_user_func(function () {
 	\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
 	    $_EXTKEY,
 	    'Pi1',
-	    'LLL:EXT:ku_phonebook/Resources/Private/Language/locallang_be.xlf:title'
+	    'LLL:EXT:ku_phonebook/Resources/Private/Language/locallang_be.xlf:title',
+		'EXT:ku_phonebook/Resources/Public/Icons/Extension.svg'
 	);
 
 	# Prepare plugin's signature
