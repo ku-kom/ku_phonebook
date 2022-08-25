@@ -15,16 +15,21 @@ defined('TYPO3') or die('Access denied.');
 ');
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-  'UniversityOfCopenhagen.KuPhonebook',
-  'Testing',
+  'ku_phonebook',
+  'pi1',
   [
-      \UniversityOfCopenhagen\KuPhonebook\Controller\ExampleController::class => 'doSomething',               
-  ],
-  // non-cacheable actions
-  [
-    \UniversityOfCopenhagen\KuPhonebook\ExampleController::class => 'doSomething',
+    \UniversityOfCopenhagen\KuPhonebook\Controller\ExampleController::class => 'list'
   ]
 );
 
-// Register ajax call
-$TYPO3_CONF_VARS['FE']['eID_include']['ajaxCall'] = \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extPath('extension_key').'Classes/Ajax/EidDispatcher.php';
+
+call_user_func(
+  function () {
+
+      /**
+       * Ajax: Example call: ?eID=searchstring
+       */
+      $GLOBALS['TYPO3_CONF_VARS']['FE']['eID_include']['searchstring'] =
+      \UniversityOfCopenhagen\KuPhonebook\Controller\ExampleController::class;
+  }
+);

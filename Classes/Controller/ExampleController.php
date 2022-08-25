@@ -3,29 +3,35 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the package ku_prototype.
+ * This file is part of the package ku_phonebook.
  * For the full copyright and license information, please read the
  * LICENSE file that was distributed with this source code.
  */
 
-namespace UniversityOfCopenhagen\KuPrototype\ViewHelpers;
-use Psr\Http\Message\ResponseFactoryInterface;
-use Psr\Http\Message\ServerRequestInterface;
-use TYPO3\CMS\Core\Http\Response;
+namespace UniversityOfCopenhagen\KuPhonebook;
 
-class ExampleController
+use TYPO3\CMS\Core\Http\AjaxRequestHandler;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
+class ExampleController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
-   /** @var ResponseFactoryInterface */
-   private $responseFactory;
 
-   public function __construct(ResponseFactoryInterface $responseFactory)
-   {
-      $this->responseFactory = $responseFactory;
-   }
-  
-    public function doSomethingAction(ServerRequestInterface $request): Response
+   /**
+   * AJAX Call
+   * @param type $params
+   * @param \TYPO3\CMS\Core\Http\AjaxRequestHandler $ajaxObj
+   * 
+   */
+    public function listAction($params = array(), \TYPO3\CMS\Core\Http\AjaxRequestHandler &$ajaxObj = NULL)
     {       
-       $query = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP('q');
-       return $query;    
+      $request =  \TYPO3\CMS\Core\Utility\GeneralUtility::_POST('searchstring');
+      $request = htmlspecialchars(strip_tags($request));
+
+      \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($request);
+
+      $ajaxObj->addContent('success', $request);
+      $ajaxObj->setContentFormat('json');
+
+      return $this->ajaxObj->render();
     }
 }
