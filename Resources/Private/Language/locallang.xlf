@@ -12,6 +12,9 @@
         <trans-unit id="phonebook_placeholder" resname="phonebook_placeholder">
             <source>Search by name, title, phone number or department</source>
         </trans-unit>
+        <trans-unit id="phonebook_search" resname="phonebook_search">
+            <source>Search</source>
+        </trans-unit>
         </body>
     </file>
 </xliff>
