@@ -1,18 +1,29 @@
-// Add to Content element Wizard
-
-mod.wizards.newContentElement.wizardItems {
-   // Add to tab "Plugin"
-   plugins {
-      elements {
-         ku_phonebook {
-            iconIdentifier = ku-image-with-overlay-icon
+####################################
+#### NEW CONTENT ELEMENT WIZARD ####
+####################################
+mod.wizards.newContentElement.wizardItems.common {
+    elements {
+        ku_phonebook {
+            iconIdentifier = ku-phonebook-icon
             title = LLL:EXT:ku_phonebook/Resources/Private/Language/locallang_be.xlf:title
             description = LLL:EXT:ku_phonebook/Resources/Private/Language/locallang_be.xlf:description
             tt_content_defValues {
-               CType = ku_phonebook
+                CType = ku_phonebook
             }
-         }
-      }
-      show := addToList(ku_phonebook)
-   }
+        }
+    }
+    show := addToList(ku_phonebook)
+}
+mod.wizards.newContentElement.wizardItems.special {
+    elements {
+        ku_phonebook {
+            iconIdentifier = ku-phonebook-icon
+            title = LLL:EXT:ku_phonebook/Resources/Private/Language/locallang_be.xlf:title
+            description = LLL:EXT:ku_phonebook/Resources/Private/Language/locallang_be.xlf:description
+            tt_content_defValues {
+                CType = ku_phonebook
+            }
+        }
+    }
+    show := addToList(ku_phonebook)
 }

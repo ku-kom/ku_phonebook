@@ -10,10 +10,6 @@ tt_content.ku_phonebook {
 	}
 
 	dataProcessing {
-		# Handle image upload:
-		10 = TYPO3\CMS\Frontend\DataProcessing\FilesProcessor
-		10 {
-			references.fieldName = image
-		}
+		10 = BK2K\BootstrapPackage\DataProcessing\FlexFormProcessor
 	}
 }
