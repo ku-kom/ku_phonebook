@@ -15,6 +15,9 @@
         <trans-unit id="phonebook_search" resname="phonebook_search">
             <source>Search</source>
         </trans-unit>
+        <trans-unit id="phonebook_clear" resname="phonebook_clear">
+            <source>Clear</source>
+        </trans-unit>
         </body>
     </file>
 </xliff>
