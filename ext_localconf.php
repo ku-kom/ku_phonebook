@@ -8,28 +8,16 @@
 
 defined('TYPO3') or die('Access denied.');
 
-// PageTS
+use TYPO3\CMS\Core\Information\Typo3Version;
+use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('
-    @import \'EXT:ku_phonebook/Configuration/TsConfig/Page/All.tsconfig\'
-');
+defined('TYPO3') or die('Access denied.');
 
-\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-  'ku_phonebook',
-  'pi1',
-  [
-    \UniversityOfCopenhagen\KuPhonebook\Controller\ExampleController::class => 'list'
-  ]
-);
-
-
-call_user_func(
-  function () {
-
-      /**
-       * Ajax: Example call: ?eID=searchstring
-       */
-      $GLOBALS['TYPO3_CONF_VARS']['FE']['eID_include']['searchstring'] =
-      \UniversityOfCopenhagen\KuPhonebook\Controller\ExampleController::class;
-  }
-);
+$versionInformation = GeneralUtility::makeInstance(Typo3Version::class);
+// Only include page.tsconfig if TYPO3 version is below 12 so that it is not imported twice.
+if ($versionInformation->getMajorVersion() < 12) {
+    ExtensionManagementUtility::addPageTSConfig('
+      @import "EXT:ku_phonebook/Configuration/page.tsconfig"
+   ');
+}
