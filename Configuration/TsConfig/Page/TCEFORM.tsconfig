@@ -3,42 +3,8 @@
 #
 TCEFORM {
     tt_content {
-        header_position {
+        subheader {
            types {
-                ku_phonebook {
-                    removeItems = center
-                }
-           }
-        }
-        header {
-             types {
-                ku_phonebook {
-                    config {
-                        eval = required
-                        max = 100
-                    }
-                }
-           }
-        }
-
-        header_layout {
-           types {
-                ku_phonebook {
-                    disabled = 1
-                }
-            }
-        }
-
-        background_image {
-            types {
-                ku_phonebook {
-                    disabled = 1
-                }
-            }
-        }
-
-        background_image_options {
-            types {
                 ku_phonebook {
                     disabled = 1
                 }

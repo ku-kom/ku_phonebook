@@ -3,19 +3,6 @@
 <f:section name="Header" />
 <f:spaceless>
     <f:section name="Main">
-        <f:render section="inputPhonebook" arguments="{_all}" />
+        <f:render partial="InputSearchfield" arguments="{_all}" />
     </f:section>
 </f:spaceless>
-<f:section name="inputPhonebook">
-    <div class="ku-phonebook-wrapper">
-        <h2 class="ku-phonebook-header{data.header_position}"><span>{data.header}</span></h2>
-        <div class="input-group mb-3">
-            <label for="kuPhonebook" class="visually-hidden">
-                <f:translate key="phonebook_label" />
-            </label>
-            <input type="search" name="kuPhonebook" id="kuPhonebook" placeholder="{f:translate(key:'LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:phonebook_placeholder')}" class="form-control" required />
-            <button type="submit" class="btn btn-primary">
-                <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:phonebook_search" />
-            </button>
-        </div>
-</f:section>

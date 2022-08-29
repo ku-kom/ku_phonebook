@@ -44,25 +44,3 @@ $GLOBALS['TCA']['tt_content']['types']['ku_phonebook']['showitem'] = '
             rowDescription,
         --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:extended,
         ';
-
-// Register fields
-// $GLOBALS['TCA']['tt_content']['columns'] = array_replace_recursive(
-//     $GLOBALS['TCA']['tt_content']['columns'],
-//     [
-//         'tx_ku_phonebook' => [
-//             'label' => 'LLL:EXT:ku_phonebook/Resources/Private/Language/locallang_be.xlf:title',
-//             'config' => [
-//                 'type' => 'input',
-//                 'placeholder' => 'LLL:EXT:ku_phonebook/Resources/Private/Language/locallang_be.xlf:phonebook_label',
-//             ]
-//         ]
-//     ]
-// );
-
-
-// Add flexForms for content element configuration
-// \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
-//     '*',
-//     'FILE:EXT:ku_phonebook/Configuration/FlexForms/SearchInput.xml',
-//     'ku_phonebook'
-// );
