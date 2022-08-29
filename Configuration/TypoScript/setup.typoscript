@@ -1,13 +1,23 @@
 ################################
-#### KU PHONEBOOK ##############
+#### cType KU PHONEBOOK ##############
 ################################
+lib.contentElement {
+    templateRootPaths {
+        7 = EXT:ku_phonebook/Resources/Private/Templates/ContentElements/
+    }
+    partialRootPaths {
+        7 = EXT:ku_phonebook/Resources/Private/Partials/ContentElements/
+    }
+    layoutRootPaths {
+        7 = EXT:ku_phonebook/Resources/Private/Layouts/ContentElements/
+    }
+}
+
+tt_content.ku_phonebook >
 tt_content.ku_phonebook =< lib.contentElement
 tt_content.ku_phonebook {
-	templateName = PhonebookSearch
-	templateRootPaths{
-		10 = EXT:ku_phonebook/Resources/Private/Templates/ContentElements/
-	}
-	partialRootPaths {
-		10 = EXT:ku_phonebook/Resources/Private/Partials/ContentElements/
-	}
+	################
+    ### TEMPLATE ###
+    ################
+    templateName = PhonebookSearch
 }
