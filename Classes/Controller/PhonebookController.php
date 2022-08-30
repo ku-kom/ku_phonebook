@@ -14,7 +14,7 @@ use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 
-class QueryController
+class PhonebookController
 {
     // Initiate the RequestFactory, which allows to run multiple requests
     // (prefer dependency injection)
