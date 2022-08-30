@@ -6,6 +6,7 @@
             <f:translate key="phonebook_label" />
         </label>
         <input type="search" name="kuPhonebook" id="kuPhonebook" placeholder="{f:translate(key:'LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:phonebook_placeholder')}" class="form-control" required />
+        <f:form.hidden name="uri_hidden" id="uri_hidden" value="{f:uri.action controller='your_controller' action='your_action' }" /> 
         <button aria-label="{f:translate(key:'LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:phonebook_clear')}" class="btn btn-default bi bi-x-lg inactive" id="reset" type="reset">
             <span aria-hidden="true" class="visually-hidden">
                 <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:phonebook_clear" /></span>
