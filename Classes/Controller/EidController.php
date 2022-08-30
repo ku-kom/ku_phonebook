@@ -34,6 +34,10 @@ $responseData = json_encode([
     ], JSON_UNESCAPED_UNICODE);
 
     $response->getBody()->write($this->createSuccessResponseObject($responseData));
+
+    // Debug:
+    \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($response);
+    
     return $response
         ->withStatus(200)
         ->withHeader('Content-Type', 'application/json');
