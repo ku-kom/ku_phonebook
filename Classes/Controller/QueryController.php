@@ -10,8 +10,9 @@ declare(strict_types=1);
 
 namespace UniversityOfCopenhagen\KuPhonebook;
 
-use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Http\RequestFactory;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 class QueryController
 {
@@ -24,7 +25,9 @@ class QueryController
 
     public function handle(): void
     {
-        $url = 'https://www2.adm.ku.dk/selv/pls/!app_tlfbog_v2.soeg';
+        // Webservive endpoint is set in TYPO3 > Admin Tools > Settings > Extension Configuration 
+        $url = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('ku_phonebook', 'uri');
+
         $query = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP('q');
 
         // See: https://docs.guzzlephp.org/en/stable/request-options.html

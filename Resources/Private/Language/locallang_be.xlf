@@ -6,10 +6,10 @@
             <authorEmail>nel@adm.ku.dk</authorEmail>
         </header>
         <body>
-        <trans-unit id="tab_name" resname="tab_name">
-            <source>KU</source>
+        <trans-unit id="phonebook_uri" resname="phonebook_uri">
+            <source>Webservice endpoint without parameters</source>
         </trans-unit>
-            <trans-unit id="title" resname="title">
+        <trans-unit id="title" resname="title">
             <source>KU Phonebook</source>
         </trans-unit>
         <trans-unit id="description" resname="description">
