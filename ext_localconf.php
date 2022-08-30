@@ -21,6 +21,3 @@ if ($versionInformation->getMajorVersion() < 12) {
       @import "EXT:ku_phonebook/Configuration/page.tsconfig"
    ');
 }
-
-// Query example.com?eid=ajax_page
-$GLOBALS['TYPO3_CONF_VARS']['FE']['eID_include']['ku_phonebook_query'] = \UniversityOfCopenhagen\KuPhonebook\Controller\EidController::class . '::phonebookResponse';
