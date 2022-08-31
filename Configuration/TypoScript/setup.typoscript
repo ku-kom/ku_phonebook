@@ -21,3 +21,17 @@ tt_content.ku_phonebook {
     ################
     templateName = PhonebookSearch
 }
+
+plugin.tx_ku_phonebook {
+    view {
+        templateRootPaths {
+             20 = EXT:ku_phonebook/Resources/Private/Templates/ContentElements/
+        }
+        partialRootPaths {
+            20 = EXT:ku_phonebook/Resources/Private/Partials/ContentElements/
+        }
+        layoutRootPaths {
+            20 = EXT:ku_phonebook/Resources/Private/Layouts/ContentElements/
+        }
+    }
+}

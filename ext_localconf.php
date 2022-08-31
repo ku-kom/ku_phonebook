@@ -15,20 +15,29 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 $versionInformation = GeneralUtility::makeInstance(Typo3Version::class);
 // Only include page.tsconfig if TYPO3 version is below 12 so that it is not imported twice.
 if ($versionInformation->getMajorVersion() < 12) {
-    ExtensionManagementUtility::addPageTSConfig('
+  ExtensionManagementUtility::addPageTSConfig('
       @import "EXT:ku_phonebook/Configuration/page.tsconfig"
    ');
 }
 
+  // Prepare plugin's signature
+  $_EXTKEY = 'ku_phonebook';
+  $extensionName = strtolower(\TYPO3\CMS\Core\Utility\GeneralUtility::underscoredToUpperCamelCase($_EXTKEY));
+  $pluginName = strtolower('Pi1');
+  $pluginSignature = $extensionName . '_' . $pluginName;
+
 // Register plugin
 
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
-use UniversityOfCopenhagen\KuPhonebook\Controller\PhonebookController;
 
 ExtensionUtility::configurePlugin(
-   'ku_phonebook',
-   'KuPhonebook',
-   [
-      PhonebookController::class => 'show',
-   ]
+  'ku_phonebook',
+  'Pi1',
+  [
+    \UniversityOfCopenhagen\KuPhonebook\Controller\PhonebookController::class => 'phonebookSearch',
+  ],
+  // non-cacheable actions
+  [
+    \UniversityOfCopenhagen\KuPhonebook\Controller\PhonebookController::class => 'phonebookSearch',
+  ]
 );

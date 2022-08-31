@@ -23,6 +23,7 @@ LICENSE file that was distributed with this source code.
 EOF;
 
 return (new PhpCsFixer\Config())
+    ->setIndent("  ")
     ->setRiskyAllowed(true)
     ->setRules([
         '@PSR2' => true,
