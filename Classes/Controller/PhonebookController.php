@@ -13,39 +13,50 @@ namespace UniversityOfCopenhagen\KuPhonebook;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
-class PhonebookController
+//class PhonebookController
+class PhonebookController extends ActionController
 {
     // Initiate the RequestFactory, which allows to run multiple requests
     // (prefer dependency injection)
-    public function __construct(
-        private readonly RequestFactory $requestFactory,
-    ) {
-    }
+    // public function __construct(
+    //     private readonly RequestFactory $requestFactory,
+    // ) {
+    // }
 
-    public function handle(): void
+    // public function handle(): void
+    // {
+    //     // Webservive endpoint is set in TYPO3 > Admin Tools > Settings > Extension Configuration 
+    //     $url = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('ku_phonebook', 'uri');
+
+    //     $query = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP('q');
+
+    //     // See: https://docs.guzzlephp.org/en/stable/request-options.html
+    //     $additionalOptions = [
+    //         'form_params' => [
+    //             'format' => 'json',
+    //             'startrecord' => '0',
+    //             'recordsperpage' => '100',
+    //             'searchstring' => $query
+    //         ]
+    //     ];
+
+    //     // Return a PSR-7 compliant response object
+    //     $response = $this->requestFactory->request($url, 'POST', $additionalOptions);
+
+    //     if ($response->getStatusCode() === 200) {
+    //         $content = $response->getBody()->getContents();
+    //         \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($content);
+    //     }
+    // }
+    public function listAction(): void
     {
-        // Webservive endpoint is set in TYPO3 > Admin Tools > Settings > Extension Configuration 
-        $url = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('ku_phonebook', 'uri');
-
-        $query = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP('q');
-
-        // See: https://docs.guzzlephp.org/en/stable/request-options.html
-        $additionalOptions = [
-            'form_params' => [
-                'format' => 'json',
-                'startrecord' => '0',
-                'recordsperpage' => '100',
-                'searchstring' => $query
-            ]
-        ];
-
-        // Return a PSR-7 compliant response object
-        $response = $this->requestFactory->request($url, 'POST', $additionalOptions);
-
-        if ($response->getStatusCode() === 200) {
-            $content = $response->getBody()->getContents();
-            \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($content);
-        }
-    }
+        debug('Echo');
+        echo json_encode([
+            'test' => 123
+        ]);
+       //$this->view->assign('query', $requestFactory);
+ 
+     }
 }
