@@ -33,11 +33,6 @@ use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 ExtensionUtility::configurePlugin(
   'ku_phonebook',
   'Pi1',
-  [
-    \UniversityOfCopenhagen\KuPhonebook\Controller\PhonebookController::class => 'phonebookSearch',
-  ],
-  // non-cacheable actions
-  [
-    \UniversityOfCopenhagen\KuPhonebook\Controller\PhonebookController::class => 'phonebookSearch',
-  ]
+  [\UniversityOfCopenhagen\KuPhonebook\Controller\PhonebookController::class => 'phonebookSearch'],
+  [\UniversityOfCopenhagen\KuPhonebook\Controller\PhonebookController::class => 'phonebookSearch']
 );
