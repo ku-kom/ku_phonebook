@@ -15,9 +15,7 @@ use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use UniversityOfCopenhagen\KuPhonebook\Service\PhonebookService;
 
-//class PhonebookController
 class PhonebookController extends ActionController
 {
   /**
@@ -28,43 +26,53 @@ class PhonebookController extends ActionController
     private readonly RequestFactory $requestFactory,
   ) {
   }
-  /**
-   * @var PhonebookService
-   */
-  protected $phonebookService;
 
-  /**
-     * @param PhonebookService $PhonebookService
-     */
-  public function injectPhonebookervice(PhonebookService $PhonebookService)
+  public function phonebookSearchAction(): void//ResponseInterface
   {
-    $this->PhonebookService = $PhonebookService;
-  }
-
-  public function phonebookSearchAction(): ResponseInterface
-  {
-    // Webservive endpoint is set in TYPO3 > Admin Tools > Settings > Extension Configuration
+    // Webservive endpoint url is set in TYPO3 > Admin Tools > Settings > Extension Configuration
     $url = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('ku_phonebook', 'uri');
+
+    // Get query from POST
     $query = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP('q');
 
     $additionalOptions = [
+      'debug' => true,
+      'form_params' => [
         'format' => 'json',
         'startrecord' => '0',
         'recordsperpage' => '100',
         'searchstring' => 'nanna'//$query
+      ]
     ];
 
     // Return response object
-    //$response = $this->requestFactory->request($url, 'POST', $additionalOptions);
-    $response = $this->requestFactory->request($url . '?format=json&startrecord=0&recordsperpage=100&searchstring=nanna', 'POST');
+    $response = $this->requestFactory->request($url, 'POST', $additionalOptions);
 
-    // Get the content as a string on a successful request
+    // Get the content on a successful request
     if ($response->getStatusCode() === 200) {
-      $content = $response->getBody()->getContents();
-      debug($content);
-      $this->view->assign('items', $content);
+      if (false !== strpos($response->getHeaderLine('Content-Type'), 'application/json')) {
+        $content = $response->getBody()->getContents();
+        $json_response = json_decode($content);
+        $body = json_decode($response->getBody()->getContents(), true);
 
-      return $this->htmlResponse();
+        debug($content);
+        debug($response->getBody());
+        debug($json_response);
+        debug($body);
+
+        //$this->view->assign('employee', $content);
+
+        //return $this->htmlResponse();
+      }
     }
+  }
+
+  protected function processResponse($json): array
+  {
+    //debug($json);
+    // foreach ($json->root->employees as $employee) {
+    //   debug($employee['PERSON_FORNAVN']);
+    // }
+    //return [];
   }
 }
