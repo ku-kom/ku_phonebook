@@ -27,7 +27,7 @@ class PhonebookController extends ActionController
   ) {
   }
 
-  public function phonebookSearchAction(): void//ResponseInterface
+  public function phonebookSearchAction(): ResponseInterface
   {
     // Webservive endpoint url is set in TYPO3 > Admin Tools > Settings > Extension Configuration
     $url = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('ku_phonebook', 'uri');
@@ -36,7 +36,7 @@ class PhonebookController extends ActionController
     $query = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP('q');
 
     $additionalOptions = [
-      'debug' => true,
+      //'debug' => true,
       'form_params' => [
         'format' => 'json',
         'startrecord' => '0',
@@ -45,34 +45,29 @@ class PhonebookController extends ActionController
       ]
     ];
 
-    // Return response object
+    // Return response object:
+    // https://docs.typo3.org/m/typo3/reference-coreapi/main/en-us/ApiOverview/Http/Index.html
+    // https://docs.typo3.org/c/typo3/cms-core/main/en-us/Changelog/11.0/Deprecation-92784-ExtbaseControllerActionsMustReturnResponseInterface.html
+    
     $response = $this->requestFactory->request($url, 'POST', $additionalOptions);
 
-    // Get the content on a successful request
+    //Get the content on a successful request
     if ($response->getStatusCode() === 200) {
       if (false !== strpos($response->getHeaderLine('Content-Type'), 'application/json')) {
-        $content = $response->getBody()->getContents();
-        $json_response = json_decode($content);
-        $body = json_decode($response->getBody()->getContents(), true);
+        $string = $response->getBody()->getContents();
+        // getContents() returns a string
+        // Convert string to json
+        $string = iconv('ISO-8859-1', 'UTF-8', $string);
+        $data = json_decode((string) $string, true);
 
-        debug($content);
-        debug($response->getBody());
-        debug($json_response);
-        debug($body);
+        //debug($data);
 
-        //$this->view->assign('employee', $content);
+        //$this->phonebookService->processResponse($data);
 
-        //return $this->htmlResponse();
+        $this->view->assign('employee', $data['root']['employees']);
+
+        return $this->htmlResponse();
       }
     }
-  }
-
-  protected function processResponse($json): array
-  {
-    //debug($json);
-    // foreach ($json->root->employees as $employee) {
-    //   debug($employee['PERSON_FORNAVN']);
-    // }
-    //return [];
   }
 }

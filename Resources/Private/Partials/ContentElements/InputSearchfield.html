@@ -14,8 +14,14 @@
             <button type="submit" id="query_kuPhonebook" class="btn btn-primary">
                 <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:phonebook_search" />
             </button>
+            
         </div>
     </form>
+    <f:for each="{employee}" as="item">
+    <ul>
+        <li>{item.PERSON_FORNAVN} {item.PERSON_EFTERNAVN}</li>
+    </ul>
+    </f:for>
 </div>
 
 </html>
