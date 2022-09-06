@@ -19,19 +19,21 @@ use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 class PhonebookController extends ActionController
 {
   /**
-   * Initiate the RequestFactory, which allows to run multiple requests
-   * (prefer dependency injection)
+   * Initiate the RequestFactory.
    */
   public function __construct(
-    private readonly RequestFactory $requestFactory,
+    protected readonly RequestFactory $requestFactory,
   ) {
   }
 
+  /**
+   * Request url and return response to fluid template.
+   * @return ResponseInterface
+   */
   public function phonebookSearchAction(): ResponseInterface
   {
     // Webservive endpoint url is set in TYPO3 > Admin Tools > Settings > Extension Configuration
     $url = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('ku_phonebook', 'uri');
-
     // Get query from POST
     $query = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP('q');
 
@@ -41,33 +43,31 @@ class PhonebookController extends ActionController
         'format' => 'json',
         'startrecord' => '0',
         'recordsperpage' => '100',
-        'searchstring' => 'nanna'//$query
+        'searchstring' => $query
       ]
     ];
 
     // Return response object:
     // https://docs.typo3.org/m/typo3/reference-coreapi/main/en-us/ApiOverview/Http/Index.html
     // https://docs.typo3.org/c/typo3/cms-core/main/en-us/Changelog/11.0/Deprecation-92784-ExtbaseControllerActionsMustReturnResponseInterface.html
-    
-    $response = $this->requestFactory->request($url, 'POST', $additionalOptions);
+    if (!empty($url)) {
+      $response = $this->requestFactory->request($url, 'POST', $additionalOptions);
+      // Get the content on a successful request
+      if ($response->getStatusCode() === 200) {
+        if (false !== strpos($response->getHeaderLine('Content-Type'), 'application/json')) {
+          $string = $response->getBody()->getContents();
+          // getContents() returns a string
+          // Convert string to json
+          $string = iconv('ISO-8859-1', 'UTF-8', $string);
+          $data = json_decode((string) $string, true);
 
-    //Get the content on a successful request
-    if ($response->getStatusCode() === 200) {
-      if (false !== strpos($response->getHeaderLine('Content-Type'), 'application/json')) {
-        $string = $response->getBody()->getContents();
-        // getContents() returns a string
-        // Convert string to json
-        $string = iconv('ISO-8859-1', 'UTF-8', $string);
-        $data = json_decode((string) $string, true);
-
-        //debug($data);
-
-        //$this->phonebookService->processResponse($data);
-
-        $this->view->assign('employee', $data['root']['employees']);
-
-        return $this->htmlResponse();
+          //debug($data);
+          if ($data) {
+            $this->view->assign('employee', $data['root']['employees']);
+          }
+        }
       }
+      return $this->htmlResponse();
     }
   }
 }
