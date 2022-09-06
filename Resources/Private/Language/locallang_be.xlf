@@ -9,11 +9,14 @@
         <trans-unit id="phonebook_uri" resname="phonebook_uri">
             <source>Webservice endpoint without parameters</source>
         </trans-unit>
+        <trans-unit id="phonebook_itemsPerPage" resname="phonebook_itemsPerPage">
+            <source>Items per page</source>
+        </trans-unit>
         <trans-unit id="title" resname="title">
             <source>KU Phonebook</source>
         </trans-unit>
         <trans-unit id="description" resname="description">
-            <source>KU directory of employees and students</source>
+            <source>KU directory of employees</source>
         </trans-unit>
         <trans-unit id="phonebook_label" resname="phonebook_label">
             <source>Search by name, title, phone number or department</source>

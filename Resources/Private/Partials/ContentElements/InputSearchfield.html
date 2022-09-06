@@ -17,11 +17,12 @@
         </div>
     </f:form>
     <div class="ku-phonebook-results">
-        <f:for each="{employee}" as="item">
+        <f:for each="{employee}" as="item" iteration="iterator">
             <ul>
                 <li>{item.PERSON_FORNAVN} {item.PERSON_EFTERNAVN}</li>
             </ul>
         </f:for>
+        <f:render partial="ContentElements/PagingResults" arguments="{paging: paging, pages: pages, paginator: paginator}" />
     </div>
 </div>
 

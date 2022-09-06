@@ -7,9 +7,3 @@
  */
 
 defined('TYPO3') or die('Access denied.');
-
-// Register ajax call
-// \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::registerAjaxHandler(
-//     'phonebookResults::phonebookResultsction',
-//     'niversityOfCopenhagen\\KuPhonebook\\Controller\\phonebookResults->phonebookResultsction'
-// );

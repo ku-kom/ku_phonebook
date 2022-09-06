@@ -13,8 +13,10 @@ namespace UniversityOfCopenhagen\KuPhonebook\Controller;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Http\RequestFactory;
+use TYPO3\CMS\Core\Pagination\SimplePagination;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
 
 class PhonebookController extends ActionController
 {
@@ -65,6 +67,9 @@ class PhonebookController extends ActionController
           if ($data) {
             $this->view->assign('employee', $data['root']['employees']);
           }
+
+          // pagination
+          
         }
       }
       return $this->htmlResponse();
