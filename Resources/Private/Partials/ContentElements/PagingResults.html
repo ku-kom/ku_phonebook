@@ -1,47 +1,46 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-    <ul class="paging paging-block">
-        <f:if condition="{paging.previousPageNumber} && {paging.previousPageNumber} >= {paging.firstPageNumber}">
-          <f:then>
-            <li class="waves-effect">
-              <a href="{f:uri.action(action:actionName, arguments:{currentPage: 1})}" title="{f:translate(key:'paging.first')}">
-                <i class="material-icons">first_page</i>
-              </a>
-            </li>
-            <li class="waves-effect">
-              <a href="{f:uri.action(action:actionName, arguments:{currentPage: paging.previousPageNumber})}" title="{f:translate(key:'paging.previous')}">
-                <i class="material-icons">chevron_left</i>
-              </a>
-            </li>
-          </f:then>
-          <f:else>
-            <li class="disabled"><a href="#"><i class="material-icons">first_page</i></a></li>
-            <li class="disabled"><a href="#"><i class="material-icons">chevron_left</i></a></li>
-          </f:else>
-        </f:if>
-        <f:for each="{pages}" as="page">
-          <li class="{f:if(condition: '{page} == {paginator.currentPageNumber}', then:'active', else:'waves-effect')}">
-            <a href="{f:uri.action(action:actionName, arguments:{currentPage: page})}">{page}</a>
-          </li>
-        </f:for>
-      
-        <f:if condition="{paging.nextPageNumber} && {paging.nextPageNumber} <= {paging.lastPageNumber}">
-          <f:then>
-            <li class="waves-effect">
-              <a href="{f:uri.action(action:actionName, arguments:{currentPage: paging.nextPageNumber})}" title="{f:translate(key:'paging.next')}">
-                <i class="material-icons">chevron_right</i>
-              </a>
-            </li>
-            <li class="waves-effect">
-              <a href="{f:uri.action(action:actionName, arguments:{currentPage: paging.lastPageNumber})}" title="{f:translate(key:'paging.last')}">
-                <i class="material-icons">last_page</i>
-              </a>
-            </li>
-          </f:then>
-          <f:else>
-            <li class="disabled"><a href="#"><i class="material-icons">chevron_right</i></a></li>
-            <li class="disabled"><a href="#"><i class="material-icons">last_page</i></a></li>
-          </f:else>
-        </f:if>
-      </ul>
+<ul class="paging paging-block">
+  <f:if condition="{paging.previousPageNumber} && {paging.previousPageNumber} >= {paging.firstPageNumber}">
+    <f:then>
+      <li class="waves-effect">
+        <a href="{f:uri.action(action:actionName, arguments:{currentPage: 1})}" title="{f:translate(key:'paging.first')}">
+          <span class="material-icons">Første</span>
+        </a>
+      </li>
+      <li class="waves-effect">
+        <a href="{f:uri.action(action:actionName, arguments:{currentPage: paging.previousPageNumber})}" title="{f:translate(key:'paging.previous')}">
+          <span class="material-icons">Forrige</span>
+        </a>
+      </li>
+    </f:then>
+    <f:else>
+      <li class="disabled"><a href="#"><span class="material-icons">Første</span></a></li>
+      <li class="disabled"><a href="#"><span class="material-icons">Forrige</span></a></li>
+    </f:else>
+  </f:if>
+  <f:for each="{pages}" as="page">
+    <li class="{f:if(condition: '{page} == {paginator.currentPageNumber}', then:'active', else:'waves-effect')}">
+      <a href="{f:uri.action(action:actionName, arguments:{currentPage: page})}">{page}</a>
+    </li>
+  </f:for>
+  <f:if condition="{paging.nextPageNumber} && {paging.nextPageNumber} <= {paging.lastPageNumber}">
+    <f:then>
+      <li class="waves-effect">
+        <a href="{f:uri.action(action:actionName, arguments:{currentPage: paging.nextPageNumber})}" title="{f:translate(key:'paging.next')}">
+          <span class="material-icons">Næste</span>
+        </a>
+      </li>
+      <li class="waves-effect">
+        <a href="{f:uri.action(action:actionName, arguments:{currentPage: paging.lastPageNumber})}" title="{f:translate(key:'paging.last')}">
+          <span class="material-icons">Sidste</span>
+        </a>
+      </li>
+    </f:then>
+    <f:else>
+      <li class="disabled"><a href="#"><span class="material-icons">Næste</span></a></li>
+      <li class="disabled"><a href="#"><span class="material-icons">Sidste</span></a></li>
+    </f:else>
+  </f:if>
+</ul>
 
 </html>

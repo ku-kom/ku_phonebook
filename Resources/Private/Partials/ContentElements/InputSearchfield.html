@@ -17,11 +17,18 @@
         </div>
     </f:form>
     <div class="ku-phonebook-results">
-        <f:for each="{employee}" as="item" iteration="iterator">
-            <ul>
-                <li>{item.PERSON_FORNAVN} {item.PERSON_EFTERNAVN}</li>
+        <f:if condition="{employee -> f:count()} > 1">
+            <f:then>
+                {employee -> f:count()}  <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:phonebook_hits" />
+            </f:then>
+            <f:else><f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:phonebook_hits" /></f:else>
+        </f:if>
+        <f:if condition="{employee}"> {totalItems} <ul>
+                <f:for each="{employee}" as="item" iteration="iterator">
+                    <li>{item.PERSON_FORNAVN} {item.PERSON_EFTERNAVN}</li>
+                </f:for>
             </ul>
-        </f:for>
+        </f:if>
         <f:render partial="ContentElements/PagingResults" arguments="{paging: paging, pages: pages, paginator: paginator}" />
     </div>
 </div>

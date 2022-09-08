@@ -13,10 +13,10 @@ namespace UniversityOfCopenhagen\KuPhonebook\Controller;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Http\RequestFactory;
+use TYPO3\CMS\Core\Pagination\ArrayPaginator;
 use TYPO3\CMS\Core\Pagination\SimplePagination;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
 
 class PhonebookController extends ActionController
 {
@@ -32,7 +32,7 @@ class PhonebookController extends ActionController
    * Request url and return response to fluid template.
    * @return ResponseInterface
    */
-  public function phonebookSearchAction(): ResponseInterface
+  public function phonebookSearchAction(int $currentPage = 1): ResponseInterface
   {
     // Webservive endpoint url is set in TYPO3 > Admin Tools > Settings > Extension Configuration
     $url = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('ku_phonebook', 'uri');
@@ -64,12 +64,24 @@ class PhonebookController extends ActionController
           $data = json_decode((string) $string, true);
 
           //debug($data);
-          if ($data) {
-            $this->view->assign('employee', $data['root']['employees']);
+          $items = $data['root']['employees'];
+          if ($items) {
+            $this->view->assign('employee', $items);
           }
 
-          // pagination
-          
+          // Paging
+          $currentPage = 1;
+          $itemsPerPage = (int)GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('ku_phonebook', 'itemsPerPage') ?? 10;
+          $arrayPaginator = new ArrayPaginator($items, $currentPage, $itemsPerPage);
+          $paging = new SimplePagination($arrayPaginator);
+          $this->view->assignMultiple(
+            [
+                'items' => $items,
+                'paginator' => $arrayPaginator,
+                'paging' => $paging,
+                'pages' => range(1, $paging->getLastPageNumber()),
+            ]
+          );
         }
       }
       return $this->htmlResponse();
