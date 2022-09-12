@@ -13,66 +13,78 @@ namespace UniversityOfCopenhagen\KuPhonebook\Controller;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Http\RequestFactory;
+use TYPO3\CMS\Core\Pagination\ArrayPaginator;
+use TYPO3\CMS\Core\Pagination\SimplePagination;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 class PhonebookController extends ActionController
 {
   /**
-   * Initiate the RequestFactory, which allows to run multiple requests
-   * (prefer dependency injection)
+   * Initiate the RequestFactory.
    */
   public function __construct(
-    private readonly RequestFactory $requestFactory,
+    protected readonly RequestFactory $requestFactory,
   ) {
   }
 
-  public function phonebookSearchAction(): void//ResponseInterface
+  /**
+   * Request url and return response to fluid template.
+   * @return ResponseInterface
+   */
+  public function phonebookSearchAction(int $currentPage = 1): ResponseInterface
   {
     // Webservive endpoint url is set in TYPO3 > Admin Tools > Settings > Extension Configuration
     $url = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('ku_phonebook', 'uri');
-
     // Get query from POST
     $query = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP('q');
 
     $additionalOptions = [
-      'debug' => true,
+      //'debug' => true,
       'form_params' => [
         'format' => 'json',
         'startrecord' => '0',
         'recordsperpage' => '100',
-        'searchstring' => 'nanna'//$query
+        'searchstring' => $query
       ]
     ];
 
-    // Return response object
-    $response = $this->requestFactory->request($url, 'POST', $additionalOptions);
+    // Return response object:
+    // https://docs.typo3.org/m/typo3/reference-coreapi/main/en-us/ApiOverview/Http/Index.html
+    // https://docs.typo3.org/c/typo3/cms-core/main/en-us/Changelog/11.0/Deprecation-92784-ExtbaseControllerActionsMustReturnResponseInterface.html
+    if (!empty($url)) {
+      $response = $this->requestFactory->request($url, 'POST', $additionalOptions);
+      // Get the content on a successful request
+      if ($response->getStatusCode() === 200) {
+        if (false !== strpos($response->getHeaderLine('Content-Type'), 'application/json')) {
+          $string = $response->getBody()->getContents();
+          // getContents() returns a string
+          // Convert string to json
+          $string = iconv('ISO-8859-1', 'UTF-8', $string);
+          $data = json_decode((string) $string, true);
 
-    // Get the content on a successful request
-    if ($response->getStatusCode() === 200) {
-      if (false !== strpos($response->getHeaderLine('Content-Type'), 'application/json')) {
-        $content = $response->getBody()->getContents();
-        $json_response = json_decode($content);
-        $body = json_decode($response->getBody()->getContents(), true);
+          //debug($data);
+          $items = $data['root']['employees'];
+          if ($items) {
+            $this->view->assign('employee', $items);
+          }
 
-        debug($content);
-        debug($response->getBody());
-        debug($json_response);
-        debug($body);
-
-        //$this->view->assign('employee', $content);
-
-        //return $this->htmlResponse();
+          // Paging
+          $currentPage = 1;
+          $itemsPerPage = (int)GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('ku_phonebook', 'itemsPerPage') ?? 10;
+          $arrayPaginator = new ArrayPaginator($items, $currentPage, $itemsPerPage);
+          $paging = new SimplePagination($arrayPaginator);
+          $this->view->assignMultiple(
+            [
+                'items' => $items,
+                'paginator' => $arrayPaginator,
+                'paging' => $paging,
+                'pages' => range(1, $paging->getLastPageNumber()),
+            ]
+          );
+        }
       }
+      return $this->htmlResponse();
     }
-  }
-
-  protected function processResponse($json): array
-  {
-    //debug($json);
-    // foreach ($json->root->employees as $employee) {
-    //   debug($employee['PERSON_FORNAVN']);
-    // }
-    //return [];
   }
 }
