@@ -20,12 +20,6 @@ if ($versionInformation->getMajorVersion() < 12) {
    ');
 }
 
-  // Prepare plugin's signature
-  $_EXTKEY = 'ku_phonebook';
-  $extensionName = strtolower(\TYPO3\CMS\Core\Utility\GeneralUtility::underscoredToUpperCamelCase($_EXTKEY));
-  $pluginName = strtolower('Pi1');
-  $pluginSignature = $extensionName . '_' . $pluginName;
-
 // Register plugin
 
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
