@@ -27,6 +27,21 @@
         <trans-unit id="phonebook_nohits" resname="phonebook_nohits">
             <source>No results</source>
         </trans-unit>
+        <trans-unit id="paging.firsts" resname="paging.first">
+            <source>Første</source>
+        </trans-unit>
+        <trans-unit id="paging.previous" resname="paging.previous">
+            <source>Forrige</source>
+        </trans-unit>
+        <trans-unit id="paging.next" resname="paging.next">
+            <source>Næste</source>
+        </trans-unit>
+        <trans-unit id="paging.last" resname="paging.last">
+            <source>Sidste</source>
+        </trans-unit>
+        <trans-unit id="paging.current" resname="paging.current">
+            <source>Current</source>
+        </trans-unit>
         </body>
     </file>
 </xliff>
