@@ -27,7 +27,10 @@
         <trans-unit id="phonebook_nohits" resname="phonebook_nohits">
             <source>No results</source>
         </trans-unit>
-        <trans-unit id="paging.firsts" resname="paging.first">
+        <trans-unit id="paging.page" resname="paging.page">
+            <source>Page</source>
+        </trans-unit>
+        <trans-unit id="paging.first" resname="paging.first">
             <source>Første</source>
         </trans-unit>
         <trans-unit id="paging.previous" resname="paging.previous">

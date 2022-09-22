@@ -12,15 +12,15 @@
         </a>
       </f:then>
       <f:else>
-        <a class="btn btn-primary disabled" aria-disabled="true"><span class="material-icons">Første</span></a>
-        <a class="btn btn-primary disabled" aria-disabled="true"><span class="material-icons">Forrige</span></a>
+        <a class="btn btn-primary disabled" aria-disabled="true"><span class="material-icons">{f:translate(key:'paging.first')}</span></a>
+        <a class="btn btn-primary disabled" aria-disabled="true"><span class="material-icons">{f:translate(key:'paging.previous')}</span></a>
       </f:else>
     </f:if>
     <f:for each="{pages}" as="page">
-      <a class="btn btn-primary {f:if(condition: '{page} == {paginator.currentPageNumber}', then:'active', else:'')}" href="{f:uri.action(action:phonebookSearch, arguments:{currentPage: page})}">{page} 
+      <a class="btn btn-primary {f:if(condition: '{page} == {paginator.currentPageNumber}', then:'active')}" href="{f:uri.action(action:phonebookSearch, arguments:{currentPage: page})}" aria-label="{f:translate(key: 'paging.page')} {page}{f:if(condition: '{page} == {paginator.currentPageNumber}', then:' ({f:translate(key: \'paging.current\')})')}" {f:if(condition: '{page} == {paginator.currentPageNumber}', then: ' aria-current="true"' )}>{page} 
         <f:if condition="{page} == {paginator.currentPageNumber}">
           <f:then>
-            <span class="visually-hidden">{f:translate(key:'paging.previous')}</span>
+            <span class="visually-hidden">{f:translate(key:'paging.current')}</span>
           </f:then>
       </f:if>
       </a>
@@ -35,8 +35,8 @@
         </a>
       </f:then>
       <f:else>
-        <a class="btn btn-primary disabled" aria-disabled="true"><span class="material-icons">Næste</span></a>
-        <a class="btn btn-primary disabled" aria-disabled="true"><span class="material-icons">Sidste</span></a>
+        <a class="btn btn-primary disabled" aria-disabled="true"><span class="material-icons">{f:translate(key:'paging.next')}</span></a>
+        <a class="btn btn-primary disabled" aria-disabled="true"><span class="material-icons">{f:translate(key:'paging.last')}</span></a>
       </f:else>
     </f:if>
   </div>

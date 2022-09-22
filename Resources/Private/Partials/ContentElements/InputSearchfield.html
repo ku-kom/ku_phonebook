@@ -22,7 +22,9 @@
     </f:if>
 </f:variable>
 <div class="ku-phonebook-wrapper">
-    <h2 class="ku-phonebook-header{data.header_position}"><span>{data.header}</span></h2>
+    <f:if condition="{data.header}">
+        <h2 class="ku-phonebook-header {data.header_position}"><span>{data.header}</span></h2>
+    </f:if>
     <f:form>
         <div class="input-group mb-3">
             <label for="kuPhonebook" class="visually-hidden">
@@ -38,8 +40,11 @@
             </button>
         </div>
     </f:form>
-    <div class="ku-phonebook-results"><f:if condition="{employee}">
-        <div aria-live="polite" class="phonebook-feedback"><div aria-atomic="true">{totalResults}</div></div>
+    <div class="ku-phonebook-results">
+        <f:if condition="{employee}">
+            <div aria-live="polite" class="phonebook-feedback">
+                <div aria-atomic="true">{totalResults}</div>
+            </div>
             <ul>
                 <f:for each="{employee}" as="item" iteration="iterator">
                     <li>{item.PERSON_FORNAVN} {item.PERSON_EFTERNAVN}<br>{item.ANSAT_ADRESSE}</li>
