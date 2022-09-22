@@ -3,12 +3,12 @@
   <f:if condition="{paging.previousPageNumber} && {paging.previousPageNumber} >= {paging.firstPageNumber}">
     <f:then>
       <li class="waves-effect">
-        <a href="{f:uri.action(action:actionName, arguments:{currentPage: 1})}" title="{f:translate(key:'paging.first')}">
+        <a href="{f:uri.action(action:phonebookSearch, arguments:{currentPage: 1})}" title="{f:translate(key:'paging.first')}">
           <span class="material-icons">Første</span>
         </a>
       </li>
       <li class="waves-effect">
-        <a href="{f:uri.action(action:actionName, arguments:{currentPage: paging.previousPageNumber})}" title="{f:translate(key:'paging.previous')}">
+        <a href="{f:uri.action(action:phonebookSearch, arguments:{currentPage: paging.previousPageNumber})}" title="{f:translate(key:'paging.previous')}">
           <span class="material-icons">Forrige</span>
         </a>
       </li>
@@ -20,18 +20,18 @@
   </f:if>
   <f:for each="{pages}" as="page">
     <li class="{f:if(condition: '{page} == {paginator.currentPageNumber}', then:'active', else:'waves-effect')}">
-      <a href="{f:uri.action(action:actionName, arguments:{currentPage: page})}">{page}</a>
+      <a href="{f:uri.action(action:phonebookSearch, arguments:{currentPage: page})}">{page}</a>
     </li>
   </f:for>
   <f:if condition="{paging.nextPageNumber} && {paging.nextPageNumber} <= {paging.lastPageNumber}">
     <f:then>
       <li class="waves-effect">
-        <a href="{f:uri.action(action:actionName, arguments:{currentPage: paging.nextPageNumber})}" title="{f:translate(key:'paging.next')}">
+        <a href="{f:uri.action(action:phonebookSearch, arguments:{currentPage: paging.nextPageNumber})}" title="{f:translate(key:'paging.next')}">
           <span class="material-icons">Næste</span>
         </a>
       </li>
       <li class="waves-effect">
-        <a href="{f:uri.action(action:actionName, arguments:{currentPage: paging.lastPageNumber})}" title="{f:translate(key:'paging.last')}">
+        <a href="{f:uri.action(action:phonebookSearch, arguments:{currentPage: paging.lastPageNumber})}" title="{f:translate(key:'paging.last')}">
           <span class="material-icons">Sidste</span>
         </a>
       </li>

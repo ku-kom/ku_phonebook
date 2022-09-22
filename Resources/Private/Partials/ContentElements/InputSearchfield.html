@@ -1,4 +1,26 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:variable name="totalResults">
+    <f:if condition="{employee -> f:count()} == 0">
+        <f:then>
+            <f:comment>
+                <!-- Zero hits -->
+            </f:comment> {employee -> f:count()}
+            <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:phonebook_hits" />
+        </f:then>
+        <f:else if="{employee -> f:count()} == 1">
+            <f:comment>
+                <!-- One hit -->
+            </f:comment> {employee -> f:count()}
+            <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:phonebook_hit" />
+        </f:else>
+        <f:else>
+            <f:comment>
+                <!-- More than one hits -->
+            </f:comment> {employee -> f:count()}
+            <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:phonebook_hits" />
+        </f:else>
+    </f:if>
+</f:variable>
 <div class="ku-phonebook-wrapper">
     <h2 class="ku-phonebook-header{data.header_position}"><span>{data.header}</span></h2>
     <f:form>
@@ -16,20 +38,19 @@
             </button>
         </div>
     </f:form>
-    <div class="ku-phonebook-results">
-        <f:if condition="{employee -> f:count()} > 1">
-            <f:then>
-                {employee -> f:count()}  <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:phonebook_hits" />
-            </f:then>
-            <f:else><f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:phonebook_hits" /></f:else>
-        </f:if>
-        <f:if condition="{employee}"> {totalItems} <ul>
+    <div class="ku-phonebook-results"><f:if condition="{employee}">
+        <div aria-live="polite" class="phonebook-feedback"><div aria-atomic="true">{totalResults}</div></div>
+            <ul>
                 <f:for each="{employee}" as="item" iteration="iterator">
-                    <li>{item.PERSON_FORNAVN} {item.PERSON_EFTERNAVN}</li>
+                    <li>{item.PERSON_FORNAVN} {item.PERSON_EFTERNAVN}<br>{item.ANSAT_ADRESSE}</li>
                 </f:for>
             </ul>
         </f:if>
-        <f:render partial="ContentElements/PagingResults" arguments="{paging: paging, pages: pages, paginator: paginator}" />
+        <f:if condition="{employee -> f:count()} > 0">
+            <f:then>
+                <f:render partial="ContentElements/PagingResults" arguments="{paging: paging, pages: pages, paginator: paginator}" />
+            </f:then>
+        </f:if>
     </div>
 </div>
 
