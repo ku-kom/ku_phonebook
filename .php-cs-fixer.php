@@ -15,20 +15,19 @@
  *  http://www.php-fig.org/psr/psr-2/
  *  http://cs.sensiolabs.org
  */
-
+$date = date('M Y') .' Nanna Ellegaard, University of Copenhagen.';
 $header = <<<EOF
 This file is part of the package ku_phonebook.
 For the full copyright and license information, please read the
-LICENSE file that was distributed with this source code.
+LICENSE file that was distributed with this source code.\r\n
 EOF;
 
 return (new PhpCsFixer\Config())
-    ->setIndent("  ")
     ->setRiskyAllowed(true)
     ->setRules([
         '@PSR2' => true,
         'header_comment' => [
-            'header' => $header
+            'header' => $header . $date
         ],
         'general_phpdoc_annotation_remove' => [
             'annotations' => [

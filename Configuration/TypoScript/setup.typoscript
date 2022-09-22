@@ -1,6 +1,6 @@
-################################
+######################################
 #### cType KU PHONEBOOK ##############
-################################
+######################################
 lib.contentElement {
     templateRootPaths {
         7 = EXT:ku_phonebook/Resources/Private/Templates/ContentElements/
@@ -13,15 +13,18 @@ lib.contentElement {
     }
 }
 
+#################
+#### TEMPLATE ###
+#################
 tt_content.ku_phonebook >
 tt_content.ku_phonebook =< lib.contentElement
 tt_content.ku_phonebook {
-	################
-    ### TEMPLATE ###
-    ################
     templateName = PhonebookSearch
 }
 
+#################
+#### PLUGIN #####
+#################
 plugin.tx_kuphonebook {
     view {
         templateRootPaths {

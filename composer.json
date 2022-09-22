@@ -1,7 +1,7 @@
 {
     "name": "university-of-copenhagen/ku-phonebook",
     "type": "typo3-cms-extension",
-    "description": "KU Phonebook",
+    "description": "Phonebook for UCPH employees",
     "homepage": "https://www.ku.dk/",
     "license": ["GPL-2.0-or-later"],
     "keywords": ["TYPO3 CMS"],
