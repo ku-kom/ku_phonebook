@@ -38,14 +38,17 @@ class PhonebookController extends ActionController
         // Webservive endpoint url is set in TYPO3 > Admin Tools > Settings > Extension Configuration
         $url = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('ku_phonebook', 'uri');
         // Get query from POST
-        $query = \TYPO3\CMS\Core\Utility\GeneralUtility::_GP('q');
+        
+        $query = $this->request->hasArgument('query') ? (string)$this->request->getArgument('query') : '';
+        $currentPage = $this->request->hasArgument('currentPage') ? (int)$this->request->getArgument('currentPage') : 1;
+        $itemsPerPage = (int)GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('ku_phonebook', 'itemsPerPage') ?? 10;
 
         $additionalOptions = [
           //'debug' => true,
           'form_params' => [
             'format' => 'json',
-            'startrecord' => '0',
-            'recordsperpage' => '100',
+            'startrecord' => 0,
+            'recordsperpage' => 100,
             'searchstring' => $query
           ]
         ];
@@ -53,7 +56,7 @@ class PhonebookController extends ActionController
         // Return response object:
         // https://docs.typo3.org/m/typo3/reference-coreapi/main/en-us/ApiOverview/Http/Index.html
         // https://docs.typo3.org/c/typo3/cms-core/main/en-us/Changelog/11.0/Deprecation-92784-ExtbaseControllerActionsMustReturnResponseInterface.html
-        if (!empty($url)) {
+        if (!empty($url) && $query) {
             $response = $this->requestFactory->request($url, 'POST', $additionalOptions);
             // Get the content on a successful request
             if ($response->getStatusCode() === 200) {
@@ -68,24 +71,25 @@ class PhonebookController extends ActionController
                     $items = $data['root']['employees'];
                     if ($items) {
                         $this->view->assign('employee', $items);
+                        $this->view->assign('currentEmployees', array_slice($items, (($currentPage - 1) * $itemsPerPage), $itemsPerPage));
                     }
 
                     // Paging
-                    $currentPage = 1;
-                    $itemsPerPage = (int)GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('ku_phonebook', 'itemsPerPage') ?? 10;
+                    
                     $arrayPaginator = new ArrayPaginator($items, $currentPage, $itemsPerPage);
                     $paging = new SimplePagination($arrayPaginator);
                     $this->view->assignMultiple(
                         [
-                            'items' => $items,
                             'paginator' => $arrayPaginator,
+                            'query'=> $query,
                             'paging' => $paging,
                             'pages' => range(1, $paging->getLastPageNumber()),
                         ]
                     );
                 }
             }
-            return $this->htmlResponse();
         }
+        return $this->htmlResponse();
+
     }
 }
