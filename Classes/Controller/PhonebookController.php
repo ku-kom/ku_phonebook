@@ -37,12 +37,15 @@ class PhonebookController extends ActionController
     {
         // Webservive endpoint url is set in TYPO3 > Admin Tools > Settings > Extension Configuration
         $url = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('ku_phonebook', 'uri');
-        // Get query from POST
         
+        // Get arguments from POST
         $query = $this->request->hasArgument('query') ? (string)$this->request->getArgument('query') : '';
         $currentPage = $this->request->hasArgument('currentPage') ? (int)$this->request->getArgument('currentPage') : 1;
+        
+        // Check settings for items per page
         $itemsPerPage = (int)GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('ku_phonebook', 'itemsPerPage') ?? 10;
 
+        // Parameters
         $additionalOptions = [
           //'debug' => true,
           'form_params' => [
@@ -56,14 +59,14 @@ class PhonebookController extends ActionController
         // Return response object:
         // https://docs.typo3.org/m/typo3/reference-coreapi/main/en-us/ApiOverview/Http/Index.html
         // https://docs.typo3.org/c/typo3/cms-core/main/en-us/Changelog/11.0/Deprecation-92784-ExtbaseControllerActionsMustReturnResponseInterface.html
-        if (!empty($url) && $query) {
+        if (!empty($url) && !empty($query)) {
             $response = $this->requestFactory->request($url, 'POST', $additionalOptions);
             // Get the content on a successful request
             if ($response->getStatusCode() === 200) {
                 if (false !== strpos($response->getHeaderLine('Content-Type'), 'application/json')) {
                     $string = $response->getBody()->getContents();
                     // getContents() returns a string
-                    // Convert string to json
+                    // Convert string back to json
                     $string = iconv('ISO-8859-1', 'UTF-8', $string);
                     $data = json_decode((string) $string, true);
 
@@ -83,6 +86,9 @@ class PhonebookController extends ActionController
                             'query'=> $query,
                             'paging' => $paging,
                             'pages' => range(1, $paging->getLastPageNumber()),
+                            'items' => (string)count($items),
+                            'itemsPerPage_start' =>  (($arrayPaginator->getKeyOfLastPaginatedItem() - $itemsPerPage) + 2),
+                            'itemsPerPage_end' =>  ($arrayPaginator->getKeyOfLastPaginatedItem() + 1)
                         ]
                     );
                 }

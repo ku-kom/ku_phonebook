@@ -45,6 +45,15 @@
         <trans-unit id="paging.current" resname="paging.current">
             <source>Current</source>
         </trans-unit>
+        <trans-unit id="paging.showing" resname="paging.showing">
+            <source>Showing</source>
+        </trans-unit>
+        <trans-unit id="paging.to" resname="paging.to">
+            <source>to</source>
+        </trans-unit>
+        <trans-unit id="paging.out-of" resname="paging.out-of">
+            <source>out of</source>
+        </trans-unit>
         </body>
     </file>
 </xliff>

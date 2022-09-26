@@ -1,23 +1,48 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-  
+  <f:variable name="totalResults">
+    <f:if condition="{items} == 0">
+        <f:then>
+            <f:comment>
+                <!-- Zero hits -->
+            </f:comment> {items}
+            <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:phonebook_hits" />
+        </f:then>
+        <f:else if="{items} == 1">
+            <f:comment>
+                <!-- One hit -->
+            </f:comment> {items}
+            <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:phonebook_hit" />
+        </f:else>
+        <f:else>
+            <f:comment>
+                <!-- More than one hits -->
+            </f:comment> {items}
+            <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:phonebook_hits" />
+        </f:else>
+    </f:if>
+</f:variable>
+
+  <div aria-live="polite" class="phonebook-feedback">
+    <div aria-atomic="true">{f:translate(key:'paging.showing')} {perPageStart} {f:translate(key:'paging.to')} {perPageEnd} {f:translate(key:'paging.out-of')} {totalResults}.</div>
+</div>
 <nav class="btn-toolbar" role="navigation" aria-label="Pagination">
   <div class="btn-group me-2">
     <f:if condition="{paging.previousPageNumber} && {paging.previousPageNumber} >= {paging.firstPageNumber}">
       <f:then>
-        <a class="btn btn-primary" href="{f:uri.action(action:phonebookSearch, arguments:{currentPage: 1, query: query})}" title="{f:translate(key:'paging.first')}">
+        <a class="btn btn-outline-primary" href="{f:uri.action(action:phonebookSearch, arguments:{currentPage: 1, query: query})}">
           <span class="material-icons">{f:translate(key:'paging.first')}</span>
         </a>
-        <a class="btn btn-primary" href="{f:uri.action(action:phonebookSearch, arguments:{currentPage: paging.previousPageNumber, query: query})}" title="{f:translate(key:'paging.previous')}">
+        <a class="btn btn-outline-primary" href="{f:uri.action(action:phonebookSearch, arguments:{currentPage: paging.previousPageNumber, query: query})}">
           <span class="material-icons">{f:translate(key:'paging.previous')}</span>
         </a>
       </f:then>
       <f:else>
-        <a class="btn btn-primary disabled" aria-disabled="true"><span class="material-icons">{f:translate(key:'paging.first')}</span></a>
-        <a class="btn btn-primary disabled" aria-disabled="true"><span class="material-icons">{f:translate(key:'paging.previous')}</span></a>
+        <a class="btn btn-outline-primary disabled" aria-disabled="true"><span class="material-icons">{f:translate(key:'paging.first')}</span></a>
+        <a class="btn btn-outline-primary disabled" aria-disabled="true"><span class="material-icons">{f:translate(key:'paging.previous')}</span></a>
       </f:else>
     </f:if>
     <f:for each="{pages}" as="page">
-      <a class="btn btn-primary {f:if(condition: '{page} == {paginator.currentPageNumber}', then:'active')}" href="{f:uri.action(action:phonebookSearch, arguments:{currentPage: page, query: query})}" aria-label="{f:translate(key: 'paging.page')} {page}{f:if(condition: '{page} == {paginator.currentPageNumber}', then:' ({f:translate(key: \'paging.current\')})')}" {f:if(condition: '{page} == {paginator.currentPageNumber}', then: ' aria-current="true"' )}>{page} 
+      <a class="btn btn-outline-primary {f:if(condition: '{page} == {paginator.currentPageNumber}', then:'active')}" href="{f:uri.action(action:phonebookSearch, arguments:{currentPage: page, query: query})}" aria-label="{f:translate(key: 'paging.page')} {page}{f:if(condition: '{page} == {paginator.currentPageNumber}', then:' ({f:translate(key: \'paging.current\')})')}" {f:if(condition: '{page} == {paginator.currentPageNumber}', then: ' aria-current="true"' )}>{page} 
         <f:if condition="{page} == {paginator.currentPageNumber}">
           <f:then>
             <span class="visually-hidden">{f:translate(key:'paging.current')}</span>
@@ -27,16 +52,16 @@
     </f:for>
     <f:if condition="{paging.nextPageNumber} && {paging.nextPageNumber} <= {paging.lastPageNumber}">
       <f:then>
-        <a class="btn btn-primary" href="{f:uri.action(action:phonebookSearch, arguments:{currentPage: paging.nextPageNumber, query: query})}" title="{f:translate(key:'paging.next')}">
+        <a class="btn btn-outline-primary" href="{f:uri.action(action:phonebookSearch, arguments:{currentPage: paging.nextPageNumber, query: query})}">
           <span class="material-icons">{f:translate(key:'paging.next')}</span>
         </a>
-        <a class="btn btn-primary" href="{f:uri.action(action:phonebookSearch, arguments:{currentPage: paging.lastPageNumber, query: query})}" title="{f:translate(key:'paging.last')}">
+        <a class="btn btn-outline-primary" href="{f:uri.action(action:phonebookSearch, arguments:{currentPage: paging.lastPageNumber, query: query})}">
           <span class="material-icons">{f:translate(key:'paging.last')}</span>
         </a>
       </f:then>
       <f:else>
-        <a class="btn btn-primary disabled" aria-disabled="true"><span class="material-icons">{f:translate(key:'paging.next')}</span></a>
-        <a class="btn btn-primary disabled" aria-disabled="true"><span class="material-icons">{f:translate(key:'paging.last')}</span></a>
+        <a class="btn btn-outline-primary disabled" aria-disabled="true"><span class="material-icons">{f:translate(key:'paging.next')}</span></a>
+        <a class="btn btn-outline-primary disabled" aria-disabled="true"><span class="material-icons">{f:translate(key:'paging.last')}</span></a>
       </f:else>
     </f:if>
   </div>
