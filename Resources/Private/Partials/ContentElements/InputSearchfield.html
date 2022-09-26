@@ -8,24 +8,61 @@
             <label for="kuPhonebook" class="visually-hidden">
                 <f:translate key="phonebook_label" />
             </label>
-            <f:form.textfield type="search" name="query" id="kuPhonebook" placeholder="{f:translate(key:'LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:phonebook_placeholder')}" class="form-control" value="{query}" />
+            <f:form.textfield type="search" name="query" id="kuPhonebook" placeholder="{f:translate(key:'LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:phonebook_placeholder')}" class="form-control" additionalAttributes="{required: 'required'}" />
             <button aria-label="{f:translate(key:'LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:phonebook_clear')}" class="btn btn-default bi bi-x-lg inactive" id="reset" type="button">
                 <span aria-hidden="true" class="visually-hidden">
-                    <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:phonebook_clear" /></span>
+                    <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:phonebook_clear" />
+                </span>
             </button>
             <button type="submit" id="query_kuPhonebook" class="btn btn-primary">
                 <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:phonebook_search" />
             </button>
         </div>
     </f:form>
-   
     <div class="ku-phonebook-results">
         <f:if condition="{items} > 0">
             <f:then>
                 <f:render partial="ContentElements/PagingResults" arguments="{paging: paging, pages: pages, paginator: paginator, query: query, items: items, perPageStart: itemsPerPage_start, perPageEnd: itemsPerPage_end}" />
-                <ul>
+                <ul class="list-unstyled my-md-2 my-lg-3">
                     <f:for each="{currentEmployees}" as="item" iteration="iterator">
-                        <li>{item.PERSON_FORNAVN} {item.PERSON_EFTERNAVN}<br>{item.ANSAT_ADRESSE}</li>
+                        <li>
+                            <dl class="row">
+                                <dt class="col-12 col-sm-2">
+                                    <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:paging.name" />
+                                </dt>
+                                <dd class="col-12 col-sm-10">{item.PERSON_FORNAVN} {item.PERSON_EFTERNAVN}</dd>
+                                <f:if condition="{item.ANSAT_UOFF_STIL_TEKST}">
+                                    <dt class="col-12 col-sm-2">
+                                        <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:paging.title" />
+                                    </dt>
+                                    <dd class="col-12 col-sm-10">{item.ANSAT_UOFF_STIL_TEKST}</dd>
+                                </f:if>
+                                <dt class="col-12 col-sm-2">
+                                    <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:paging.function" />
+                                </dt>
+                                <dd class="col-12 col-sm-10">{item.STED_NAVN_SAMLET}</dd>
+                                <dt class="col-12 col-sm-2">
+                                    <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:paging.unit" />
+                                </dt>
+                                <dd class="col-12 col-sm-10">{item.ANSAT_FUNKTION}</dd>
+                                <dt class="col-12 col-sm-2">
+                                    <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:paging.email" />
+                                </dt>
+                                <dd class="col-12 col-sm-10">{item.ANSAT_ARB_EMAIL}</dd>
+                                <dt class="col-12 col-sm-2">
+                                    <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:paging.secretary" />
+                                </dt>
+                                <dd class="col-12 col-sm-10">{item.ANSAT_TLF_SEKR}</dd>
+                                <dt class="col-12 col-sm-2">
+                                    <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:paging.website" />
+                                </dt>
+                                <dd class="col-12 col-sm-10">{item.ANSAT_WWW}</dd>
+                                <dt class="col-12 col-sm-2">
+                                    <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:paging.address" />
+                                </dt>
+                                <dd class="col-12 col-sm-10">{item.ANSAT_ADRESSE}</dd>
+                            </dl>
+                        </li>
                     </f:for>
                 </ul>
                 <f:render partial="ContentElements/PagingResults" arguments="{paging: paging, pages: pages, paginator: paginator, query: query, items: items, perPageStart: itemsPerPage_start, perPageEnd: itemsPerPage_end}" />

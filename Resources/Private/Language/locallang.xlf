@@ -54,6 +54,30 @@
         <trans-unit id="paging.out-of" resname="paging.out-of">
             <source>out of</source>
         </trans-unit>
+         <trans-unit id="paging.name" resname="paging.name">
+            <source>Name</source>
+        </trans-unit>
+        <trans-unit id="paging.address" resname="paging.address">
+            <source>Address</source>
+        </trans-unit>
+        <trans-unit id="paging.title" resname="paging.title">
+            <source>Title</source>
+        </trans-unit>
+        <trans-unit id="paging.function" resname="paging.function">
+            <source>Function</source>
+        </trans-unit>
+        <trans-unit id="paging.unit" resname="paging.unit">
+            <source>Unit/­dept.</source>
+        </trans-unit>
+        <trans-unit id="paging.email" resname="paging.email">
+            <source>E-mail</source>
+        </trans-unit>
+        <trans-unit id="paging.secretary" resname="paging.secretary">
+            <source>Secretary</source>
+        </trans-unit>
+        <trans-unit id="paging.website" resname="paging.website">
+            <source>Website</source>
+        </trans-unit>
         </body>
     </file>
 </xliff>
