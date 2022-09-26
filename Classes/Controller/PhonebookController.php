@@ -67,7 +67,6 @@ class PhonebookController extends ActionController
                     $string = iconv('ISO-8859-1', 'UTF-8', $string);
                     $data = json_decode((string) $string, true);
 
-                    //debug($data);
                     $items = $data['root']['employees'];
                     if ($items) {
                         $this->view->assign('employee', $items);
