@@ -3,104 +3,26 @@
     <f:if condition="{data.header}">
         <h2 class="ku-phonebook-header {data.header_position}"><span>{data.header}</span></h2>
     </f:if>
-    <f:form>
+    <f:form id="ku-phonebook">
         <div class="input-group mb-3">
             <label for="kuPhonebook" class="visually-hidden">
                 <f:translate key="phonebook_label" />
             </label>
-            <f:form.textfield type="search" name="query" id="kuPhonebook" placeholder="{f:translate(key:'LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:phonebook_placeholder')}" class="form-control" additionalAttributes="{required: 'required'}" />
-            <button aria-label="{f:translate(key:'LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:phonebook_clear')}" class="btn btn-default bi bi-x-lg inactive" id="reset" type="button">
-                <span aria-hidden="true" class="visually-hidden">
+            <f:form.textfield type="search" name="query" id="kuPhonebook" placeholder="{f:translate(key:'LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:phonebook_placeholder')}" class="form-control" additionalAttributes="{required: 'required'}" value="{query}" />
+            <f:form.button aria="{label: '{f:translate(key:\'LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:phonebook_clear\')}'}" class="btn btn-default bi bi-x-lg inactive" id="reset" type="button"><span aria-hidden="true" class="visually-hidden">
                     <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:phonebook_clear" />
-                </span>
-            </button>
-            <button type="submit" id="query_kuPhonebook" class="btn btn-primary">
+                </span></f:form.button>
+            <f:form.button id="query_kuPhonebook" class="btn btn-primary">
                 <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:phonebook_search" />
-            </button>
+            </f:form.button>
         </div>
     </f:form>
     <div class="ku-phonebook-results">
+        
         <f:if condition="{items} > 0">
             <f:then>
                 <f:render partial="ContentElements/PagingResults" arguments="{paging: paging, pages: pages, paginator: paginator, query: query, items: items, perPageStart: itemsPerPage_start, perPageEnd: itemsPerPage_end}" />
-                <ul class="list-unstyled my-md-2 my-lg-3">
-                    <f:for each="{currentEmployees}" as="item" iteration="iterator">
-                        <li>
-                            <dl class="row">
-                                <dt class="col-12 col-sm-2">
-                                    <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:paging.name" />
-                                </dt>
-                                <dd class="col-12 col-sm-10">{item.PERSON_FORNAVN} {item.PERSON_EFTERNAVN}</dd>
-                                <f:if condition="{item.ANSAT_UOFF_STIL_TEKST}">
-                                    <dt class="col-12 col-sm-2">
-                                        <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:paging.title" />
-                                    </dt>
-                                    <dd class="col-12 col-sm-10">{item.ANSAT_UOFF_STIL_TEKST}</dd>
-                                </f:if>
-                                <f:if condition="{item.STED_NAVN_SAMLET}">
-                                    <dt class="col-12 col-sm-2">
-                                        <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:paging.function" />
-                                    </dt>
-                                    <dd class="col-12 col-sm-10">{item.STED_NAVN_SAMLET}</dd>
-                                </f:if>
-                                <f:if condition="{item.ANSAT_FUNKTION}">
-                                    <dt class="col-12 col-sm-2">
-                                        <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:paging.unit" />
-                                    </dt>
-                                    <dd class="col-12 col-sm-10">{item.ANSAT_FUNKTION}</dd>
-                                </f:if>
-                                <f:if condition="{item.ANSAT_PURE_DK}">
-                                    <dt class="col-12 col-sm-2">
-                                        <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:paging.profile" />
-                                    </dt>
-                                    <dd class="col-12 col-sm-10">{item.ANSAT_PURE_DK}</dd>
-                                </f:if>
-                                <f:if condition="{item.ANSAT_ARB_EMAIL}">
-                                    <dt class="col-12 col-sm-2">
-                                        <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:paging.email" />
-                                    </dt>
-                                    <dd class="col-12 col-sm-10">{item.ANSAT_ARB_EMAIL}</dd>
-                                </f:if>
-                                <f:if condition="{item.ANSAT_MOBIL}">
-                                    <dt class="col-12 col-sm-2">
-                                        <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:paging.cellphone" />
-                                    </dt>
-                                    <dd class="col-12 col-sm-10">{item.ANSAT_MOBIL}</dd>
-                                </f:if>
-                                <f:if condition="{item.ANSAT_TLF_SEKR}">
-                                    <dt class="col-12 col-sm-2">
-                                        <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:paging.secretary" />
-                                    </dt>
-                                    <dd class="col-12 col-sm-10">{item.ANSAT_TLF_SEKR}</dd>
-                                </f:if>
-                                <f:if condition="{item.ANSAT_WWW}">
-                                    <dt class="col-12 col-sm-2">
-                                        <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:paging.website" />
-                                    </dt>
-                                    <dd class="col-12 col-sm-10">{item.ANSAT_WWW}</dd>
-                                </f:if>
-                                <f:if condition="{item.ANSAT_ADRESSE}">
-                                    <dt class="col-12 col-sm-2">
-                                        <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:paging.address" />
-                                    </dt>
-                                    <dd class="col-12 col-sm-10">{item.ANSAT_ADRESSE}</dd>
-                                </f:if>
-                                <f:if condition="{item.LOKATION}">
-                                    <dt class="col-12 col-sm-2">
-                                        <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:paging.location" />
-                                    </dt>
-                                    <dd class="col-12 col-sm-10">{item.LOKATION}</dd>
-                                </f:if>
-                                <f:if condition="{item.BEMAERK}">
-                                    <dt class="col-12 col-sm-2">
-                                        <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:paging.remarks" />
-                                    </dt>
-                                    <dd class="col-12 col-sm-10">{item.BEMAERK}</dd>
-                                </f:if>
-                            </dl>
-                        </li>
-                    </f:for>
-                </ul>
+                <f:render partial="ContentElements/DisplayResults" arguments="{_all}" />
                 <f:render partial="ContentElements/PagingResults" arguments="{paging: paging, pages: pages, paginator: paginator, query: query, items: items, perPageStart: itemsPerPage_start, perPageEnd: itemsPerPage_end}" />
             </f:then>
         </f:if>

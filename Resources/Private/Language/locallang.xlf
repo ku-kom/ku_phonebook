@@ -16,7 +16,10 @@
             <source>Search</source>
         </trans-unit>
         <trans-unit id="phonebook_clear" resname="phonebook_clear">
-            <source>Clear</source>
+            <source>Reset</source>
+        </trans-unit>
+        <trans-unit id="phonebook_warning" resname="phonebook_warning">
+            <source>Warning</source>
         </trans-unit>
         <trans-unit id="phonebook_hit" resname="phonebook_hit">
             <source>result</source>
@@ -68,6 +71,9 @@
         </trans-unit>
          <trans-unit id="paging.profile" resname="paging.profile">
             <source>Profile</source>
+        </trans-unit>
+        <trans-unit id="paging.research" resname="paging.research">
+            <source>Research and publications</source>
         </trans-unit>
         <trans-unit id="paging.unit" resname="paging.unit">
             <source>Unit/­dept.</source>

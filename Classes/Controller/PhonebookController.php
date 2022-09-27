@@ -16,6 +16,7 @@ use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Pagination\ArrayPaginator;
 use TYPO3\CMS\Core\Pagination\SimplePagination;
+use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
@@ -37,11 +38,11 @@ class PhonebookController extends ActionController
     {
         // Webservive endpoint url is set in TYPO3 > Admin Tools > Settings > Extension Configuration
         $url = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('ku_phonebook', 'uri');
-        
+
         // Get arguments from POST
         $query = $this->request->hasArgument('query') ? (string)$this->request->getArgument('query') : '';
         $currentPage = $this->request->hasArgument('currentPage') ? (int)$this->request->getArgument('currentPage') : 1;
-        
+
         // Check settings for items per page
         $itemsPerPage = (int)GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('ku_phonebook', 'itemsPerPage') ?? 10;
 
@@ -91,9 +92,15 @@ class PhonebookController extends ActionController
                         ]
                     );
                 }
+            } else {
+                $this->addFlashMessage(
+                    $response->getStatusCode() . ' ' . $response->getReasonPhrase(),
+                    (string)\TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('phonebook_warning', 'ku_phonebook'),
+                    ContextualFeedbackSeverity::WARNING,
+                    false
+                );
             }
         }
         return $this->htmlResponse();
-
     }
 }
