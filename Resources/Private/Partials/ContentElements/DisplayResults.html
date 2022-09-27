@@ -6,75 +6,76 @@
                 <li>
                     <dl class="row">
                         <dt class="col-12 col-sm-2">
-                            <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:paging.name" />
+                            <f:translate key="paging.name" />
                         </dt>
                         <dd class="col-12 col-sm-10">{item.PERSON_FORNAVN} {item.PERSON_EFTERNAVN}</dd>
                         <f:if condition="{item.ANSAT_UOFF_STIL_TEKST}">
                             <dt class="col-12 col-sm-2">
-                                <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:paging.title" />
+                                <f:translate key="paging.title" />
                             </dt>
                             <dd class="col-12 col-sm-10">{item.ANSAT_UOFF_STIL_TEKST}</dd>
                         </f:if>
                         <f:if condition="{item.STED_NAVN_SAMLET}">
                             <dt class="col-12 col-sm-2">
-                                <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:paging.function" />
+                                <f:translate key="paging.function" />
                             </dt>
                             <dd class="col-12 col-sm-10">{item.STED_NAVN_SAMLET}</dd>
                         </f:if>
                         <f:if condition="{item.ANSAT_FUNKTION}">
                             <dt class="col-12 col-sm-2">
-                                <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:paging.unit" />
+                                <f:translate key="paging.unit" />
                             </dt>
                             <dd class="col-12 col-sm-10">{item.ANSAT_FUNKTION}</dd>
                         </f:if>
                         <f:if condition="{item.ANSAT_PURE_DK}">
                             <dt class="col-12 col-sm-2">
-                                <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:paging.profile" />
+                                <f:translate key="paging.profile" />
                             </dt>
-                            <dd class="col-12 col-sm-10"><a href="{item.ANSAT_PURE_DK}">
-                                    <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:paging.research" />
+                            <dd class="col-12 col-sm-10">
+                                <a href="{item.ANSAT_PURE_DK}">
+                                    <f:translate key="paging.research" />
                                 </a>
                             </dd>
                         </f:if>
                         <f:if condition="{item.ANSAT_ARB_EMAIL}">
                             <dt class="col-12 col-sm-2">
-                                <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:paging.email" />
+                                <f:translate key="paging.email" />
                             </dt>
                             <dd class="col-12 col-sm-10"><a href="mailto:{item.ANSAT_ARB_EMAIL}">{item.ANSAT_ARB_EMAIL}</a></dd>
                         </f:if>
                         <f:if condition="{item.ANSAT_MOBIL}">
                             <dt class="col-12 col-sm-2">
-                                <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:paging.cellphone" />
+                                <f:translate key="paging.cellphone" />
                             </dt>
                             <dd class="col-12 col-sm-10"><a href="tel:{item.ANSAT_MOBIL}">{item.ANSAT_MOBIL}</a></dd>
                         </f:if>
                         <f:if condition="{item.ANSAT_TLF_SEKR}">
                             <dt class="col-12 col-sm-2">
-                                <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:paging.secretary" />
+                                <f:translate key="paging.secretary" />
                             </dt>
                             <dd class="col-12 col-sm-10"><a href="tel:{item.ANSAT_TLF_SEKR}">{item.ANSAT_TLF_SEKR}</a></dd>
                         </f:if>
                         <f:if condition="{item.ANSAT_WWW}">
                             <dt class="col-12 col-sm-2">
-                                <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:paging.website" />
+                                <f:translate key="paging.website" />
                             </dt>
                             <dd class="col-12 col-sm-10"><a href="{item.ANSAT_WWW}">{item.ANSAT_WWW}</a></dd>
                         </f:if>
                         <f:if condition="{item.ANSAT_ADRESSE}">
                             <dt class="col-12 col-sm-2">
-                                <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:paging.address" />
+                                <f:translate key="paging.address" />
                             </dt>
                             <dd class="col-12 col-sm-10">{item.ANSAT_ADRESSE}</dd>
                         </f:if>
                         <f:if condition="{item.LOKATION}">
                             <dt class="col-12 col-sm-2">
-                                <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:paging.location" />
+                                <f:translate key="paging.location" />
                             </dt>
                             <dd class="col-12 col-sm-10">{item.LOKATION}</dd>
                         </f:if>
                         <f:if condition="{item.BEMAERK}">
                             <dt class="col-12 col-sm-2">
-                                <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:paging.remarks" />
+                                <f:translate key="paging.remarks" />
                             </dt>
                             <dd class="col-12 col-sm-10">{item.BEMAERK}</dd>
                         </f:if>

@@ -8,17 +8,18 @@
             <label for="kuPhonebook" class="visually-hidden">
                 <f:translate key="phonebook_label" />
             </label>
-            <f:form.textfield type="search" name="query" id="kuPhonebook" placeholder="{f:translate(key:'LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:phonebook_placeholder')}" class="form-control" additionalAttributes="{required: 'required'}" value="{query}" />
-            <f:form.button aria="{label: '{f:translate(key:\'LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:phonebook_clear\')}'}" class="btn btn-default bi bi-x-lg inactive" id="reset" type="button"><span aria-hidden="true" class="visually-hidden">
-                    <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:phonebook_clear" />
-                </span></f:form.button>
+            <f:form.textfield type="search" name="query" id="kuPhonebook" placeholder="{f:translate(key:'phonebook_placeholder')}" class="form-control" additionalAttributes="{required: 'required'}" value="{query}" />
+            <f:form.button aria="{label: '{f:translate(key:\'phonebook_clear\')}'}" class="btn btn-default bi bi-x-lg inactive" id="reset" type="button">
+                <span aria-hidden="true" class="visually-hidden">
+                    <f:translate key="phonebook_clear" />
+                </span>
+            </f:form.button>
             <f:form.button id="query_kuPhonebook" class="btn btn-primary">
-                <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:phonebook_search" />
+                <f:translate key="phonebook_search" />
             </f:form.button>
         </div>
     </f:form>
     <div class="ku-phonebook-results">
-        
         <f:if condition="(query) && {employee} > 0">
             <f:then>
                 <f:render partial="ContentElements/PagingResults" arguments="{paging: paging, pages: pages, paginator: paginator, query: query, items: items, perPageStart: itemsPerPage_start, perPageEnd: itemsPerPage_end}" />
@@ -27,7 +28,7 @@
             </f:then>
             <f:else>
                 <div class="alert alert-info" role="alert">
-                    <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:phonebook_nohits" />
+                    <f:translate key="phonebook_nohits" />
                 </div>
                 <f:flashMessages />
             </f:else>
