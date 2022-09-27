@@ -1,5 +1,4 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
-    
 <f:if condition="{items} > 0">
     <f:then>
         <ul class="list-unstyled my-md-2 my-lg-3">
@@ -34,6 +33,7 @@
                             </dt>
                             <dd class="col-12 col-sm-10"><a href="{item.ANSAT_PURE_DK}">
                                     <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:paging.research" />
+                                </a>
                             </dd>
                         </f:if>
                         <f:if condition="{item.ANSAT_ARB_EMAIL}">
@@ -83,12 +83,6 @@
             </f:for>
         </ul>
     </f:then>
-    <f:else>
-        <div class="alert alert-info" role="alert">
-            <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:phonebook_nohits" />
-        </div>
-        <f:flashMessages />
-    </f:else>
 </f:if>
 
 </html>

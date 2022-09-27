@@ -33,17 +33,20 @@
         <trans-unit id="paging.page" resname="paging.page">
             <source>Page</source>
         </trans-unit>
+        <trans-unit id="paging.disabled" resname="paging.disabled">
+            <source>disabled</source>
+        </trans-unit>
         <trans-unit id="paging.first" resname="paging.first">
-            <source>Første</source>
+            <source>First</source>
         </trans-unit>
         <trans-unit id="paging.previous" resname="paging.previous">
-            <source>Forrige</source>
+            <source>Previous</source>
         </trans-unit>
         <trans-unit id="paging.next" resname="paging.next">
-            <source>Næste</source>
+            <source>Next</source>
         </trans-unit>
         <trans-unit id="paging.last" resname="paging.last">
-            <source>Sidste</source>
+            <source>Last</source>
         </trans-unit>
         <trans-unit id="paging.current" resname="paging.current">
             <source>Current</source>

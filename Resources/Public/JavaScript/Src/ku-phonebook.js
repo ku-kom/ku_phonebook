@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     reset.addEventListener('click', () => {
         input.value = '';
+        input.focus();
     });
 
 });

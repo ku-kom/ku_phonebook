@@ -19,12 +19,18 @@
     </f:form>
     <div class="ku-phonebook-results">
         
-        <f:if condition="{items} > 0">
+        <f:if condition="(query) && {employee} > 0">
             <f:then>
                 <f:render partial="ContentElements/PagingResults" arguments="{paging: paging, pages: pages, paginator: paginator, query: query, items: items, perPageStart: itemsPerPage_start, perPageEnd: itemsPerPage_end}" />
                 <f:render partial="ContentElements/DisplayResults" arguments="{_all}" />
                 <f:render partial="ContentElements/PagingResults" arguments="{paging: paging, pages: pages, paginator: paginator, query: query, items: items, perPageStart: itemsPerPage_start, perPageEnd: itemsPerPage_end}" />
             </f:then>
+            <f:else>
+                <div class="alert alert-info" role="alert">
+                    <f:translate key="LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:phonebook_nohits" />
+                </div>
+                <f:flashMessages />
+            </f:else>
         </f:if>
     </div>
 </div>

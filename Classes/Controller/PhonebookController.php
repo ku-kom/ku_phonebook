@@ -92,13 +92,6 @@ class PhonebookController extends ActionController
                         ]
                     );
                 }
-            } else {
-                $this->addFlashMessage(
-                    $response->getStatusCode() . ' ' . $response->getReasonPhrase(),
-                    (string)\TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('phonebook_warning', 'ku_phonebook'),
-                    ContextualFeedbackSeverity::WARNING,
-                    false
-                );
             }
         }
         return $this->htmlResponse();

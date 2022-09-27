@@ -18,21 +18,22 @@
 <div aria-live="polite" class="phonebook-feedback">
   <div aria-atomic="true">{f:translate(key:'paging.showing')} {perPageStart} {f:translate(key:'paging.to')} {perPageEnd} {f:translate(key:'paging.out-of')} {items} {totalResults}</div>
 </div>
-<nav class="btn-toolbar" role="navigation" aria-label="Pagination">
+<nav class="btn-toolbar mt-2" role="navigation" aria-label="Pagination">
   <div class="btn-group me-2">
     <f:if condition="{paging.previousPageNumber} && {paging.previousPageNumber} >= {paging.firstPageNumber}">
       <f:then>
-        <a class="btn btn-outline-primary" href="{f:uri.action(action:phonebookSearch, arguments:{currentPage: 1, query: query})}">
+        <a class="btn btn-outline-primary" href="{f:uri.action(action:phonebookSearch, arguments:{currentPage: 1, query: query})}" title="{f:translate(key:'paging.first')}">
           <span class="bi bi-chevron-double-left" aria-hidden="true"></span>
           <span class="visually-hidden">{f:translate(key:'paging.first')}</span>
         </a>
-        <a class="btn btn-outline-primary" href="{f:uri.action(action:phonebookSearch, arguments:{currentPage: paging.previousPageNumber, query: query})}">
+        <a class="btn btn-outline-primary" href="{f:uri.action(action:phonebookSearch, arguments:{currentPage: paging.previousPageNumber, query: query})}" title="{f:translate(key:'paging.previous')}">
+          <span class="bi bi-chevron-left" aria-hidden="true"></span>
           <span class="visually-hidden">{f:translate(key:'paging.previous')}</span>
         </a>
       </f:then>
       <f:else>
-        <a class="btn btn-outline-primary disabled" aria-disabled="true"><span class="bi bi-chevron-double-left" aria-hidden="true"></span><span class="visually-hidden">{f:translate(key:'paging.first')}</span></a>
-        <a class="btn btn-outline-primary disabled" aria-disabled="true"><span class="bi bi-chevron-left" aria-hidden="true"></span><span class="visually-hidden">{f:translate(key:'paging.previous')}</span></a>
+        <a class="btn btn-outline-primary disabled" aria-disabled="true"><span class="bi bi-chevron-double-left" aria-hidden="true"></span><span class="visually-hidden">{f:translate(key:'paging.first')} {f:translate(key:'paging.disabled')}</span></a>
+        <a class="btn btn-outline-primary disabled" aria-disabled="true"><span class="bi bi-chevron-left" aria-hidden="true"></span><span class="visually-hidden">{f:translate(key:'paging.previous')} {f:translate(key:'paging.disabled')}</span></a>
       </f:else>
     </f:if>
     <f:for each="{pages}" as="page">
@@ -45,18 +46,18 @@
     </f:for>
     <f:if condition="{paging.nextPageNumber} && {paging.nextPageNumber} <= {paging.lastPageNumber}">
       <f:then>
-        <a class="btn btn-outline-primary" href="{f:uri.action(action:phonebookSearch, arguments:{currentPage: paging.nextPageNumber, query: query})}">
-          <span class="bi bi-chevron-double-right" aria-hidden="true"></span>
+        <a class="btn btn-outline-primary" href="{f:uri.action(action:phonebookSearch, arguments:{currentPage: paging.nextPageNumber, query: query})}" title="{f:translate(key:'paging.next')}">
+          <span class="bi bi-chevron-right" aria-hidden="true"></span>
           <span class="visually-hidden">{f:translate(key:'paging.next')}</span>
         </a>
-        <a class="btn btn-outline-primary" href="{f:uri.action(action:phonebookSearch, arguments:{currentPage: paging.lastPageNumber, query: query})}">
-          <span class="bi bi-chevron-right" aria-hidden="true"></span>
+        <a class="btn btn-outline-primary" href="{f:uri.action(action:phonebookSearch, arguments:{currentPage: paging.lastPageNumber, query: query})}" title="{f:translate(key:'paging.last')}">
+          <span class="bi bi-chevron-double-right" aria-hidden="true"></span>
           <span class="visually-hidden">{f:translate(key:'paging.last')}</span>
         </a>
       </f:then>
       <f:else>
-        <a class="btn btn-outline-primary disabled" aria-disabled="true"><span class="bi bi-chevron-double-right" aria-hidden="true"></span><span class="visually-hidden">{f:translate(key:'paging.next')}</span></a>
-        <a class="btn btn-outline-primary disabled" aria-disabled="true"><span class="bi bi-chevron-right" aria-hidden="true"></span><span class="visually-hidden">{f:translate(key:'paging.last')}</span></a>
+        <a class="btn btn-outline-primary disabled" aria-disabled="true"><span class="bi bi-chevron-double-right" aria-hidden="true"></span><span class="visually-hidden">{f:translate(key:'paging.next')} {f:translate(key:'paging.disabled')}</span></a>
+        <a class="btn btn-outline-primary disabled" aria-disabled="true"><span class="bi bi-chevron-right" aria-hidden="true"></span><span class="visually-hidden">{f:translate(key:'paging.last')} {f:translate(key:'paging.disabled')}</span></a>
       </f:else>
     </f:if>
   </div>
