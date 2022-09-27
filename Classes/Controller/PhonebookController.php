@@ -79,7 +79,6 @@ class PhonebookController extends ActionController
                     // Paging
                     $arrayPaginator = new ArrayPaginator($items, $currentPage, $itemsPerPage);
                     $paging = new SimplePagination($arrayPaginator);
-                    //var_dump($arrayPaginator->getPaginatedItems());
                     $this->view->assignMultiple(
                         [
                             'paginator' => $arrayPaginator,
@@ -87,7 +86,7 @@ class PhonebookController extends ActionController
                             'paging' => $paging,
                             'pages' => range(1, $paging->getLastPageNumber()),
                             'items' => (string)count($items),
-                            'itemsPerPage_start' =>  (($arrayPaginator->getKeyOfLastPaginatedItem() - $itemsPerPage) + 2) > 0 ? (($arrayPaginator->getKeyOfLastPaginatedItem() - $itemsPerPage) + 2) : 0,
+                            'itemsPerPage_start' =>  ($arrayPaginator->getKeyOfLastPaginatedItem() - $itemsPerPage) > 0 ? (($arrayPaginator->getKeyOfLastPaginatedItem() - $itemsPerPage) + 2) : 0,
                             'itemsPerPage_end' =>  ($arrayPaginator->getKeyOfLastPaginatedItem() + 1)
                         ]
                     );
