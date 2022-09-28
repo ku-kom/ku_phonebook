@@ -22,20 +22,22 @@
 <f:comment><f:debug title="Employee">{employee}</f:debug></f:comment>
     
     <div id="ku-phonebook-results">
-        <f:if condition="{employee} > 0">
-            <f:then>
-                <f:render partial="ContentElements/PagingResults" arguments="{paging: paging, pages: pages, paginator: paginator, query: query, offsetStart: offset_start, offsetEnd: offset_end, items: items}" />
+        <f:flashMessages />
+        <f:if condition="{query}">
+            <f:if condition="{employee} > 0">
+                <f:then>
+                    <f:render partial="ContentElements/PagingResults" arguments="{paging: paging, pages: pages, paginator: paginator, query: query, offsetStart: offset_start, offsetEnd: offset_end, items: items}" />
 
-                <f:render partial="ContentElements/DisplayResults" arguments="{_all}" />
-                
-                <f:render partial="ContentElements/PagingResults" arguments="{paging: paging, pages: pages, paginator: paginator, query: query, offsetStart: offset_start, offsetEnd: offset_end, items: items}" />
-            </f:then>
-            <f:else>
-                <div class="alert alert-info" role="alert">
-                    <f:translate key="phonebook_nohits" />
-                </div>
-                <f:flashMessages />
-            </f:else>
+                    <f:render partial="ContentElements/DisplayResults" arguments="{_all}" />
+                    
+                    <f:render partial="ContentElements/PagingResults" arguments="{paging: paging, pages: pages, paginator: paginator, query: query, offsetStart: offset_start, offsetEnd: offset_end, items: items}" />
+                </f:then>
+                <f:else>
+                    <div class="alert alert-info" role="alert">
+                        <f:translate key="phonebook_nohits" />
+                    </div>
+                </f:else>
+            </f:if>
         </f:if>
     </div>
 </div>

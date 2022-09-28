@@ -15,14 +15,11 @@ lib.contentElement {
     }
 }
 
-#################
-#### TEMPLATE ###
-#################
+#################################
+#### MAKE PLUGIN ACT AS cTYPE ###
+#################################
 tt_content.ku_phonebook >
-tt_content.ku_phonebook =< lib.contentElement
-tt_content.ku_phonebook {
-    templateName = PhonebookSearch
-}
+tt_content.ku_phonebook =< tt_content.list.20.kuphonebook_pi1
 
 #################
 #### PLUGIN #####

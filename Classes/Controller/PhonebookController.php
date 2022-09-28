@@ -7,6 +7,7 @@ namespace UniversityOfCopenhagen\KuPhonebook\Controller;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Http\RequestFactory;
+use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Pagination\ArrayPaginator;
 use TYPO3\CMS\Core\Pagination\SimplePagination;
 use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
@@ -88,7 +89,7 @@ class PhonebookController extends ActionController
                 $this->addFlashMessage(
                     $response->getStatusCode() . ': ' . $response->getReasonPhrase(),
                     'Warning',
-                    ContextualFeedbackSeverity::WARNING,
+                    FlashMessage::ERROR,
                     false
                 );
             }
