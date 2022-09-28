@@ -87,8 +87,8 @@ class PhonebookController extends ActionController
                             'paging' => $paging,
                             'pages' => range(1, $paging->getLastPageNumber()),
                             'items' => (string)count($items),
-                            'itemsPerPage_start' =>  ($arrayPaginator->getKeyOfLastPaginatedItem() - $itemsPerPage) > 0 ? (($arrayPaginator->getKeyOfLastPaginatedItem() - $itemsPerPage) + 2) : 0,
-                            'itemsPerPage_end' =>  ($arrayPaginator->getKeyOfLastPaginatedItem() + 1)
+                            'offset_start' =>  ($arrayPaginator->getKeyOfLastPaginatedItem() - $itemsPerPage) > 0 ? (($arrayPaginator->getKeyOfLastPaginatedItem() - $itemsPerPage) + 2) : 0,
+                            'offset_end' =>  ($arrayPaginator->getKeyOfLastPaginatedItem() + 1)
                         ]
                     );
                 }

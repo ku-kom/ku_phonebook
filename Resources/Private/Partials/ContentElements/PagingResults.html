@@ -1,22 +1,18 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+  
 <f:variable name="totalResults">
   <f:if condition="{items} == 0 || {items} > 1">
     <f:then>
-      <f:comment>
-        <!-- Zero or more than one hits -->
-      </f:comment>
       <f:translate key="phonebook_hits" />.
     </f:then>
     <f:else if="{items} == 1">
-      <f:comment>
-        <!-- One hit -->
-      </f:comment>
       <f:translate key="phonebook_hit" />.
     </f:else>
   </f:if>
 </f:variable>
+
 <div aria-live="polite" class="phonebook-feedback">
-  <div aria-atomic="true">{f:translate(key:'paging.showing')} {perPageStart} {f:translate(key:'paging.to')} {perPageEnd} {f:translate(key:'paging.out-of')} {items} {totalResults}</div>
+  <div aria-atomic="true">{f:translate(key:'paging.showing')} {offsetStart} {f:translate(key:'paging.to')} {offsetEnd} {f:translate(key:'paging.out-of')} {items} {totalResults}</div>
 </div>
 <nav class="btn-toolbar mt-2" role="navigation" aria-label="Pagination">
   <div class="btn-group me-2">

@@ -19,12 +19,15 @@
             </f:form.button>
         </div>
     </f:form>
-    <div class="ku-phonebook-results">
-        <f:if condition="(query) && {employee} > 0">
+    <f:comment>
+        <f:debug title="Employee">{employee}</f:debug>
+    </f:comment>
+    <div id="ku-phonebook-results">
+        <f:if condition="{employee} > 0">
             <f:then>
-                <f:render partial="ContentElements/PagingResults" arguments="{paging: paging, pages: pages, paginator: paginator, query: query, items: items, perPageStart: itemsPerPage_start, perPageEnd: itemsPerPage_end}" />
+                <f:render partial="ContentElements/PagingResults" arguments="{paging: paging, pages: pages, paginator: paginator, query: query, items: items, offsetStart: offset_start, offsetEnd: offset_end}" />
                 <f:render partial="ContentElements/DisplayResults" arguments="{_all}" />
-                <f:render partial="ContentElements/PagingResults" arguments="{paging: paging, pages: pages, paginator: paginator, query: query, items: items, perPageStart: itemsPerPage_start, perPageEnd: itemsPerPage_end}" />
+                <f:render partial="ContentElements/PagingResults" arguments="{paging: paging, pages: pages, paginator: paginator, query: query, items: items, offsetStart: offset_start, offsetEnd: offset_end}" />
             </f:then>
             <f:else>
                 <div class="alert alert-info" role="alert">
