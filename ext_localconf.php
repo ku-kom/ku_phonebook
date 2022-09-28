@@ -30,3 +30,6 @@ ExtensionUtility::configurePlugin(
   [\UniversityOfCopenhagen\KuPhonebook\Controller\PhonebookController::class => 'phonebookSearch'],
   [\UniversityOfCopenhagen\KuPhonebook\Controller\PhonebookController::class => 'phonebookSearch']
 );
+
+// KU phonebook Viewhelper namespace
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces']['ku_phonebook'] = ['UniversityOfCopenhagen\KuPhonebook\ViewHelpers'];

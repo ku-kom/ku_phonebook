@@ -53,7 +53,9 @@
                             <dt class="col-12 col-sm-2">
                                 <f:translate key="paging.secretary" />
                             </dt>
-                            <dd class="col-12 col-sm-10"><a href="tel:{item.ANSAT_TLF_SEKR}">{item.ANSAT_TLF_SEKR}</a></dd>
+                            <dd class="col-12 col-sm-10"><a href="tel:{item.ANSAT_TLF_SEKR}">
+                                <ku_phonebook:PhoneNumber phoneNumber="{item.ANSAT_TLF_SEKR}">{item.ANSAT_TLF_SEKR}</ku_phonebook:PhoneNumber></a>
+                            </dd>
                         </f:if>
                         <f:if condition="{item.ANSAT_WWW}">
                             <dt class="col-12 col-sm-2">
