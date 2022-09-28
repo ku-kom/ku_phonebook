@@ -2,13 +2,6 @@
 
 declare(strict_types=1);
 
-/*
- * This file is part of the package ku_phonebook.
- * For the full copyright and license information, please read the
- * LICENSE file that was distributed with this source code.
- * Sep 2022 Nanna Ellegaard, University of Copenhagen.
- */
-
 namespace UniversityOfCopenhagen\KuPhonebook\Controller;
 
 use Psr\Http\Message\ResponseInterface;
@@ -39,7 +32,7 @@ class PhonebookController extends ActionController
         // Webservive endpoint url is set in TYPO3 > Admin Tools > Settings > Extension Configuration
         $url = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('ku_phonebook', 'uri');
 
-        // Check settings for items per page
+        // Check settings for items per page set in TYPO3 > Admin Tools > Settings > Extension Configuration
         $itemsPerPage = (int)GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('ku_phonebook', 'itemsPerPage') ?? 10;
 
         // Get arguments from request
@@ -57,7 +50,7 @@ class PhonebookController extends ActionController
           ]
         ];
 
-        // Return response object:
+        // Return response object
         if (!empty($url) && !empty($query)) {
             $response = $this->requestFactory->request($url, 'POST', $additionalOptions);
             // Get the content on a successful request
@@ -85,7 +78,7 @@ class PhonebookController extends ActionController
                             'paging' => $paging,
                             'pages' => range(1, $paging->getLastPageNumber()),
                             'items' => count($items),
-                            'offset_start' =>  ($arrayPaginator->getKeyOfLastPaginatedItem() - $itemsPerPage) > 0 ? (($arrayPaginator->getKeyOfLastPaginatedItem() - $itemsPerPage) + 2) : 0,
+                            'offset_start' =>  ($arrayPaginator->getKeyOfLastPaginatedItem() - $itemsPerPage) > 1 ? (($arrayPaginator->getKeyOfLastPaginatedItem() - $itemsPerPage) + 2) : 0,
                             'offset_end' =>  ($arrayPaginator->getKeyOfLastPaginatedItem() + 1)
                         ]
                     );

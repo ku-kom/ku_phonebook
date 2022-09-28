@@ -1,7 +1,9 @@
 ######################################
 #### cType KU PHONEBOOK ##############
 ######################################
+lib.contentElement = FLUIDTEMPLATE
 lib.contentElement {
+    templateName = Default
     templateRootPaths {
         7 = EXT:ku_phonebook/Resources/Private/Templates/ContentElements/
     }

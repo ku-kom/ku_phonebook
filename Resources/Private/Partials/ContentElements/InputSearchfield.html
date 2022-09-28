@@ -19,14 +19,15 @@
             </f:form.button>
         </div>
     </f:form>
-
-    <f:debug title="Employee">{employee}</f:debug>
+<f:comment><f:debug title="Employee">{employee}</f:debug></f:comment>
     
     <div id="ku-phonebook-results">
         <f:if condition="{employee} > 0">
             <f:then>
                 <f:render partial="ContentElements/PagingResults" arguments="{paging: paging, pages: pages, paginator: paginator, query: query, offsetStart: offset_start, offsetEnd: offset_end, items: items}" />
+
                 <f:render partial="ContentElements/DisplayResults" arguments="{_all}" />
+                
                 <f:render partial="ContentElements/PagingResults" arguments="{paging: paging, pages: pages, paginator: paginator, query: query, offsetStart: offset_start, offsetEnd: offset_end, items: items}" />
             </f:then>
             <f:else>

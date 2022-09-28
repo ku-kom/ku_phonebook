@@ -10,5 +10,26 @@ TCEFORM {
                 }
             }
         }
+        subheader {
+           types {
+                list {
+                    disabled = 1
+                }
+            }
+        }
+        header_link {
+            types {
+                ku_phonebook {
+                    disabled = 1
+                }
+            }
+        }
+        header_link {
+           types {
+                list {
+                    disabled = 1
+                }
+            }
+        }
     }
 }
