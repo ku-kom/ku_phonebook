@@ -58,8 +58,6 @@ class PhonebookController extends ActionController
         ];
 
         // Return response object:
-        // https://docs.typo3.org/m/typo3/reference-coreapi/main/en-us/ApiOverview/Http/Index.html
-        // https://docs.typo3.org/c/typo3/cms-core/main/en-us/Changelog/11.0/Deprecation-92784-ExtbaseControllerActionsMustReturnResponseInterface.html
         if (!empty($url) && !empty($query)) {
             $response = $this->requestFactory->request($url, 'POST', $additionalOptions);
             // Get the content on a successful request
@@ -86,12 +84,20 @@ class PhonebookController extends ActionController
                             'query'=> $query,
                             'paging' => $paging,
                             'pages' => range(1, $paging->getLastPageNumber()),
-                            'items' => (string)count($items),
+                            'items' => count($items),
                             'offset_start' =>  ($arrayPaginator->getKeyOfLastPaginatedItem() - $itemsPerPage) > 0 ? (($arrayPaginator->getKeyOfLastPaginatedItem() - $itemsPerPage) + 2) : 0,
                             'offset_end' =>  ($arrayPaginator->getKeyOfLastPaginatedItem() + 1)
                         ]
                     );
                 }
+            } else {
+                // Sisplay error message
+                $this->addFlashMessage(
+                    $response->getStatusCode() . ': ' . $response->getReasonPhrase(),
+                    'Warning',
+                    ContextualFeedbackSeverity::WARNING,
+                    false
+                );
             }
         }
         return $this->htmlResponse();
