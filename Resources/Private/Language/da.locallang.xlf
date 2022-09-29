@@ -94,9 +94,6 @@
             <source>Function</source>
             <target>Funktion</target>
         </trans-unit>
-        <trans-unit id="paging.nodefunction" resname="paging.nodefunction">
-            <source>item.ANSAT_FUNKTION_ENGELSK</source>
-        </trans-unit>
          <trans-unit id="paging.profile" resname="paging.profile">
             <source>Profile</source>
             <target>Profil</target>
@@ -107,7 +104,7 @@
         </trans-unit>
         <trans-unit id="paging.unit" resname="paging.unit">
             <source>Unit/­dept.</source>
-            <target>Enhed/afdeling</target>
+            <target>Enhed/&shy;­afdeling</target>
         </trans-unit>
         <trans-unit id="paging.email" resname="paging.email">
             <source>E-mail</source>
@@ -115,6 +112,10 @@
         <trans-unit id="paging.cellphone" resname="paging.cellphone">
             <source>Mobile</source>
             <target>Mobil</target>
+        </trans-unit>
+        <trans-unit id="paging.phone" resname="paging.phone">
+            <source>Phone</source>
+            <target>Telefon</target>
         </trans-unit>
         <trans-unit id="paging.secretary" resname="paging.secretary">
             <source>Secretary</source>

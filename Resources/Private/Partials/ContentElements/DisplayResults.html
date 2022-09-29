@@ -5,6 +5,13 @@
             <f:for each="{currentEmployees}" as="item" iteration="iterator">
                 <li>
                     <dl class="row">
+                        <f:comment>
+                            <f:if condition="{item.FOTOURL}">
+                                <div class="contact-right">
+                                    <img src="{item.FOTOURL}" class="img-fluid" alt="">
+                                </div>
+                            </f:if>
+                        </f:comment>
                         <dt class="col-12 col-sm-2">
                             <f:translate key="paging.name" />
                         </dt>
@@ -47,7 +54,15 @@
                             <dt class="col-12 col-sm-2">
                                 <f:translate key="paging.cellphone" />
                             </dt>
-                            <dd class="col-12 col-sm-10"><a href="tel:{item.ANSAT_MOBIL}"><ku:PhoneNumber phoneNumber="{item.ANSAT_MOBIL}" /></a></dd>
+                            <dd class="col-12 col-sm-10"><a href="tel:{item.ANSAT_MOBIL}">
+                                    <ku:PhoneNumber phoneNumber="{item.ANSAT_MOBIL}" /></a></dd>
+                        </f:if>
+                        <f:if condition="{item.ANSAT_ARB_TLF}">
+                            <dt class="col-12 col-sm-2">
+                                <f:translate key="paging.phone" />
+                            </dt>
+                            <dd class="col-12 col-sm-10"><a href="tel:{item.ANSAT_ARB_TLF}">
+                                    <ku:PhoneNumber phoneNumber="{item.ANSAT_ARB_TLF}" /></a></dd>
                         </f:if>
                         <f:if condition="{item.ANSAT_TLF_SEKR}">
                             <dt class="col-12 col-sm-2">

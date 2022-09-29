@@ -87,6 +87,9 @@
         <trans-unit id="paging.cellphone" resname="paging.cellphone">
             <source>Mobile</source>
         </trans-unit>
+        <trans-unit id="paging.phone" resname="paging.phone">
+            <source>Phone</source>
+        </trans-unit>
         <trans-unit id="paging.secretary" resname="paging.secretary">
             <source>Secretary</source>
         </trans-unit>
