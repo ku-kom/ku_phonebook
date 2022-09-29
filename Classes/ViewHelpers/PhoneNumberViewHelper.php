@@ -47,6 +47,9 @@ class PhoneNumberViewHelper extends AbstractViewHelper
     {
         $data = filter_var($phoneNumber, FILTER_SANITIZE_NUMBER_INT);
 
+        // Remove dashes, if any
+        $data = Str_Replace( '-', '', $data);
+
         $regex_format = '/^\+45(\d{2})(\d{2})(\d{2})(\d{2})$/i';
         // assuming that the +45 is constant and then use the \d shortcut to match decimal characters.
         // The value in {} is the number of characters to match.
