@@ -26,7 +26,7 @@ class PhoneNumberViewHelper extends AbstractViewHelper
      */
     public function initializeArguments()
     {
-        $this->registerArgument('phonenumber', 'string', 'The actual phone number', true);
+        $this->registerArgument('phoneNumber', 'string', 'The actual phone number', true);
     }
 
     public static function renderStatic(
@@ -34,7 +34,7 @@ class PhoneNumberViewHelper extends AbstractViewHelper
         \Closure $renderChildrenClosure,
         RenderingContextInterface $renderingContext
     ): string {
-        return self::getPhoneNumber($arguments['phonenumber']);
+        return self::getPhoneNumber($arguments['phoneNumber']);
     }
 
     /**
@@ -45,11 +45,11 @@ class PhoneNumberViewHelper extends AbstractViewHelper
      */
     protected static function getPhoneNumber(string $phoneNumber): string
     {
-        $data = $phoneNumber;
+        $data = '1234567891'; // Testing
 
         if (preg_match('/^\+\d(\d{3})(\d{3})(\d{4})$/', $data, $matches)) {
             $result = $matches[1] . '-' .$matches[2] . '-' . $matches[3];
-            return 'test';
+            return $result;
         }
     }
 }
