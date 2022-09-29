@@ -45,11 +45,16 @@ class PhoneNumberViewHelper extends AbstractViewHelper
      */
     protected static function getPhoneNumber(string $phoneNumber): string
     {
-        $data = '1234567891'; // Testing
+        $data = filter_var($phoneNumber, FILTER_SANITIZE_NUMBER_INT);
 
-        if (preg_match('/^\+\d(\d{3})(\d{3})(\d{4})$/', $data, $matches)) {
-            $result = $matches[1] . '-' .$matches[2] . '-' . $matches[3];
+        $regex_format = '/^\+45(\d{2})(\d{2})(\d{2})(\d{2})$/i';
+        // assuming that the +45 is constant and then use the \d shortcut to match decimal characters.
+        // The value in {} is the number of characters to match.
+        if (preg_match($regex_format, $data, $matches)) {
+            $result = '+45 ' . $matches[1] . ' ' .$matches[2] . ' ' . $matches[3] . ' ' . $matches[4];
             return $result;
+        } else {
+            return $phoneNumber;
         }
     }
 }

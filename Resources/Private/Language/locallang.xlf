@@ -72,9 +72,6 @@
         <trans-unit id="paging.function" resname="paging.function">
             <source>Function</source>
         </trans-unit>
-        <trans-unit id="paging.nodefunction" resname="paging.nodefunction">
-            <source>item.ANSAT_FUNKTION_ENGELSK</source>
-        </trans-unit>
          <trans-unit id="paging.profile" resname="paging.profile">
             <source>Profile</source>
         </trans-unit>
