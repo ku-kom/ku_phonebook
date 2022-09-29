@@ -1,17 +1,26 @@
-#ku-phonebook-results .contact-right {
-    float: right;
-    width: 120px;
+.phonebook-results.row>* {
+    padding-right: calc(var(--bs-gutter-x) * .3);
+    padding-left: calc(var(--bs-gutter-x) * .3);
 }
-#ku-phonebook-results .contact-right img {
-    width: 120px;
+
+.staff-image {
+    position: relative;
+ 
 }
-#ku-phonebook-results .contact-right:before {
+
+.staff-image>img {
+    position: relative;
+    height: 100px;
+    width: auto;
+}
+
+.staff-image:before {
+    position: absolute;
     display: inline-block;
     content: '';
     height: 100%;
     width: 100%;
     background-size: contain;
-    background-position: 50%;
     background-repeat: no-repeat;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' fill-opacity='.4' class='bi bi-person-fill' viewBox='0 0 16 16'%3E%3Cpath d='M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23ddd' class='bi bi-person-fill' viewBox='0 0 16 16'%3E%3Cpath d='M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z'/%3E%3C/svg%3E");
 }

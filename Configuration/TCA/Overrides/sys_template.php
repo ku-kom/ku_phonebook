@@ -18,6 +18,6 @@ call_user_func(function () {
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile(
         $extensionKey,
         'Configuration/TypoScript',
-        'KU Phonebook'
+        'LLL:EXT:ku_phonebook/Resources/Private/Language/locallang_be.xlf:title'
     );
 });

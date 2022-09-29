@@ -15,7 +15,7 @@ call_user_func(function () {
     ExtensionUtility::registerPlugin(
         'ku_phonebook',
         'Pi1',
-        'LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:phonebook_label',
+        'LLL:EXT:ku_phonebook/Resources/Private/Language/locallang_be.xlf:title',
         'ku-phonebook-icon'
     );
 });

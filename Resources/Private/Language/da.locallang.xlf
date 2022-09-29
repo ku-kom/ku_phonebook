@@ -104,7 +104,7 @@
         </trans-unit>
         <trans-unit id="paging.unit" resname="paging.unit">
             <source>Unit/­dept.</source>
-            <target>Enhed/&shy;­afdeling</target>
+            <target>Enhed/­afdeling</target>
         </trans-unit>
         <trans-unit id="paging.email" resname="paging.email">
             <source>E-mail</source>
