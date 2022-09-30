@@ -26,6 +26,10 @@
             <source>Warning</source>
             <target>Advarsel</target>
         </trans-unit>
+        <trans-unit id="phonebook_warningmsg" resname="phonebook_warningmsg">
+            <source>Error: Something went wrong, try again later.</source>
+            <target>Fejl. Noget gik galt. Prøv igen senere.</target>
+        </trans-unit>
         <trans-unit id="phonebook_hit" resname="phonebook_hit">
             <source>result</source>
             <target>resultat</target>

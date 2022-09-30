@@ -10,7 +10,6 @@ use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Pagination\ArrayPaginator;
 use TYPO3\CMS\Core\Pagination\SimplePagination;
-use TYPO3\CMS\Core\Type\ContextualFeedbackSeverity;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
@@ -87,8 +86,8 @@ class PhonebookController extends ActionController
             } else {
                 // Sisplay error message
                 $this->addFlashMessage(
-                    $response->getStatusCode() . ': ' . $response->getReasonPhrase(),
-                    'Warning',
+                    (string)\TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('phonebook_warningmsg', 'ku_phonebook'),
+                    '',
                     FlashMessage::ERROR,
                     false
                 );
