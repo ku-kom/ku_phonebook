@@ -10,6 +10,7 @@ use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Messaging\FlashMessage;
 use TYPO3\CMS\Core\Pagination\ArrayPaginator;
 use TYPO3\CMS\Core\Pagination\SimplePagination;
+use TYPO3\CMS\Core\Localization\LanguageService;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
@@ -54,7 +55,7 @@ class PhonebookController extends ActionController
         if (!empty($url) && !empty($query)) {
             $response = $this->requestFactory->request($url, 'POST', $additionalOptions);
             // Get the content on a successful request
-            if ($response->getStatusCode() === 200) {
+            if ($response->getStatusCode() !== 200) {
                 if (false !== strpos($response->getHeaderLine('Content-Type'), 'application/json')) {
                     $string = $response->getBody()->getContents();
                     // getContents() returns a string
@@ -86,7 +87,7 @@ class PhonebookController extends ActionController
             } else {
                 // Sisplay error message
                 $this->addFlashMessage(
-                    (string)\TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('phonebook_warningmsg', 'ku_phonebook'),
+                    $this->getLanguageService()->sL('LLL:EXT:ku_phonebook/Resources/Private/Language/locallang.xlf:phonebook_warningmsg'),
                     '',
                     FlashMessage::ERROR,
                     false
@@ -94,5 +95,10 @@ class PhonebookController extends ActionController
             }
         }
         return $this->htmlResponse();
+    }
+
+    protected function getLanguageService(): LanguageService
+    {
+        return $GLOBALS['LANG'];
     }
 }
