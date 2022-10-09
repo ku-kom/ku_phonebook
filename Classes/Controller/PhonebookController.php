@@ -55,7 +55,7 @@ class PhonebookController extends ActionController
         if (!empty($url) && !empty($query)) {
             $response = $this->requestFactory->request($url, 'POST', $additionalOptions);
             // Get the content on a successful request
-            if ($response->getStatusCode() !== 200) {
+            if ($response->getStatusCode() === 200) {
                 if (false !== strpos($response->getHeaderLine('Content-Type'), 'application/json')) {
                     $string = $response->getBody()->getContents();
                     // getContents() returns a string
