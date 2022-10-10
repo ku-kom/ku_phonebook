@@ -27,13 +27,16 @@ tt_content.ku_phonebook =< tt_content.list.20.kuphonebook_pi1
 plugin.tx_kuphonebook {
     view {
         templateRootPaths {
-             20 = EXT:ku_phonebook/Resources/Private/Templates/
+             0 = EXT:ku_phonebook/Resources/Private/Templates/
+             1 = {$plugin.tx_kuphonebook.view.templateRootPath}
         }
         partialRootPaths {
-            20 = EXT:ku_phonebook/Resources/Private/Partials/
+            0 = EXT:ku_phonebook/Resources/Private/Partials/
+            1 = {$plugin.tx_kuphonebook.view.partialRootPath}
         }
         layoutRootPaths {
-            20 = EXT:ku_phonebook/Resources/Private/Layouts/
+            0 = EXT:ku_phonebook/Resources/Private/Layouts/
+            1 = {$plugin.tx_kuphonebook.view.layoutRootPath}
         }
     }
 }

@@ -1,0 +1,10 @@
+plugin.tx_kuphonebook {
+    view {
+        # cat=plugin.tx_kuphonebook/file; type=string; label=Path to template root (FE)
+        templateRootPath = EXT:ku_phonebook/Resources/Private/Templates/
+        # cat=plugin.tx_kuphonebook/file; type=string; label=Path to template partials (FE)
+        partialRootPath = EXT:ku_phonebook/Resources/Private/Partials/
+        # cat=plugin.tx_kuphonebook/file; type=string; label=Path to template layouts (FE)
+        layoutRootPath = EXT:ku_phonebook/Resources/Private/Layouts/
+    }
+}
