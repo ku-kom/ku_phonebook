@@ -19,3 +19,6 @@ call_user_func(function () {
         'ku-phonebook-icon'
     );
 });
+
+// Remove default plugin fields
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist']['kuphonebook_pi1'] = 'recursive,pages';
