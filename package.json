@@ -1,6 +1,6 @@
 {
     "name": "ku_phonebook",
-    "version": "1.0.1",
+    "version": "1.0.3",
     "description": "Sitepackage for the project \"KU phonebook\" ",
     "main": "Resources/Public/JavaScript/Dist/ku-phonebook.min.js",
 	"scripts": {
