@@ -7,7 +7,7 @@
         </header>
         <body>
         <trans-unit id="phonebook_label" resname="phonebook_label">
-            <source>KU directory of employees</source>
+            <source>KU phonebook</source>
             <target>Telefonbog</target>
         </trans-unit>
         <trans-unit id="phonebook_placeholder" resname="phonebook_placeholder">

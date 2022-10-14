@@ -9,9 +9,12 @@
 
 defined('TYPO3') or die('Access denied.');
 
+$contentTypeName = 'ku_phonebook';
+$ll = 'LLL:EXT:'.$contentTypeName.'/Resources/Private/Language/locallang_be.xlf:';
+
 // Add Content Element
-if (!is_array($GLOBALS['TCA']['tt_content']['types']['ku_phonebook'] ?? false)) {
-    $GLOBALS['TCA']['tt_content']['types']['ku_phonebook'] = [];
+if (!is_array($GLOBALS['TCA']['tt_content']['types'][$contentTypeName] ?? false)) {
+    $GLOBALS['TCA']['tt_content']['types'][$contentTypeName] = [];
 }
 
 // Add content element to selector list
@@ -19,7 +22,7 @@ if (!is_array($GLOBALS['TCA']['tt_content']['types']['ku_phonebook'] ?? false)) 
     'tt_content',
     'CType',
     [
-        'LLL:EXT:ku_phonebook/Resources/Private/Language/locallang_be.xlf:title',
+        $ll . 'title',
         'ku_phonebook',
         'ku-phonebook-icon'
     ],
@@ -47,4 +50,4 @@ $ku_phonebook_settings = [
 ];
 
 // Configure element type
-$GLOBALS['TCA']['tt_content']['types']['ku_phonebook'] = $ku_phonebook_settings;
+$GLOBALS['TCA']['tt_content']['types'][$contentTypeName] = $ku_phonebook_settings;
