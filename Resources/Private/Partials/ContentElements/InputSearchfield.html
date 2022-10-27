@@ -19,10 +19,16 @@
             </f:form.button>
         </div>
     </f:form>
-<f:comment><f:debug title="Employee">{employee}</f:debug></f:comment>
     
     <div id="ku-phonebook-results">
-        <f:flashMessages />
+        <f:flashMessages as="flashMessages">
+            <dl class="messages">
+                <f:for each="{flashMessages}" as="flashMessage">
+                    <dt>{flashMessage.code}</dt>
+                    <dd>{flashMessage.message}</dd>
+                </f:for>
+            </dl>
+        </f:flashMessages>
         <f:if condition="{query}">
             <f:if condition="{employee} > 0">
                 <f:then>
