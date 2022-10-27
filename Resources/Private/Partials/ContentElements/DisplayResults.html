@@ -1,104 +1,110 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 <f:if condition="{employee} > 0">
     <f:then>
-        <ul class="list-unstyled my-md-2 my-lg-3">
+        <ul class="list-unstyled my-md-2 my-lg-3 staff-list">
             <f:for each="{currentEmployees}" as="item" iteration="iterator">
                 <li>
-                    <dl class="row">
-                        <f:comment>
+                    <div class="row">
+                        <div class="col-12 col-sm-8">
+                            <div class="row staff-details">
+                                <div class="col-12 col-sm-2">
+                                    <f:translate key="paging.name" />
+                                </div>
+                                <div class="col-12 col-sm-10">{item.PERSON_FORNAVN} {item.PERSON_EFTERNAVN}</div>
+                                <f:if condition="{item.ANSAT_UOFF_STIL_TEKST}">
+                                    <div class="col-12 col-sm-2">
+                                        <f:translate key="paging.title" />
+                                    </div>
+                                    <div class="col-12 col-sm-10">{item.ANSAT_UOFF_STIL_TEKST}</div>
+                                </f:if>
+                                <f:if condition="{item.ANSAT_FUNKTION}">
+                                    <div class="col-12 col-sm-2">
+                                        <f:translate key="paging.function" />
+                                    </div>
+                                    <div class="col-12 col-sm-10">{item.ANSAT_FUNKTION}</div>
+                                </f:if>
+                                <f:if condition="{item.ANSAT_PURE_DK}">
+                                    <div class="col-12 col-sm-2">
+                                        <f:translate key="paging.profile" />
+                                    </div>
+                                    <div class="col-12 col-sm-10">
+                                        <a href="{item.ANSAT_PURE_DK}">
+                                            <f:translate key="paging.research" />
+                                        </a>
+                                    </div>
+                                </f:if>
+                                <f:if condition="{item.STED_NAVN_SAMLET}">
+                                    <div class="col-12 col-sm-2">
+                                        <f:translate key="paging.unit" />
+                                    </div>
+                                    <div class="col-12 col-sm-10">{item.STED_NAVN_SAMLET}</div>
+                                </f:if>
+                                <f:if condition="{item.ANSAT_ARB_EMAIL}">
+                                    <div class="col-12 col-sm-2">
+                                        <f:translate key="paging.email" />
+                                    </div>
+                                    <div class="col-12 col-sm-10">
+                                        <f:link.email email="{item.ANSAT_ARB_EMAIL}">{item.ANSAT_ARB_EMAIL}</f:link.email>
+                                    </div>
+                                </f:if>
+                                <f:if condition="{item.ANSAT_MOBIL}">
+                                    <div class="col-12 col-sm-2">
+                                        <f:translate key="paging.cellphone" />
+                                    </div>
+                                    <div class="col-12 col-sm-10"><a href="tel:{item.ANSAT_MOBIL}">
+                                            <ku:Format.PhoneNumber phoneNumber="{item.ANSAT_MOBIL}" /></a></div>
+                                </f:if>
+                                <f:if condition="{item.ANSAT_ARB_TLF}">
+                                    <div class="col-12 col-sm-2">
+                                        <f:translate key="paging.phone" />
+                                    </div>
+                                    <div class="col-12 col-sm-10"><a href="tel:{item.ANSAT_ARB_TLF}">
+                                            <ku:Format.PhoneNumber phoneNumber="{item.ANSAT_ARB_TLF}" /></a></div>
+                                </f:if>
+                                <f:if condition="{item.ANSAT_TLF_SEKR}">
+                                    <div class="col-12 col-sm-2">
+                                        <f:translate key="paging.secretary" />
+                                    </div>
+                                    <div class="col-12 col-sm-10">
+                                        <a href="tel:{item.ANSAT_TLF_SEKR}">
+                                            <ku:Format.PhoneNumber phoneNumber="{item.ANSAT_TLF_SEKR}" />
+                                        </a>
+                                    </div>
+                                </f:if>
+                                <f:if condition="{item.ANSAT_WWW}">
+                                    <div class="col-12 col-sm-2">
+                                        <f:translate key="paging.website" />
+                                    </div>
+                                    <div class="col-12 col-sm-10"><a href="{item.ANSAT_WWW}">{item.ANSAT_WWW}</a></div>
+                                </f:if>
+                                <f:if condition="{item.ANSAT_ADRESSE}">
+                                    <div class="col-12 col-sm-2">
+                                        <f:translate key="paging.adivress" />
+                                    </div>
+                                    <div class="col-12 col-sm-10">{item.ANSAT_ADRESSE}</div>
+                                </f:if>
+                                <f:if condition="{item.LOKATION}">
+                                    <div class="col-12 col-sm-2">
+                                        <f:translate key="paging.location" />
+                                    </div>
+                                    <div class="col-12 col-sm-10">{item.LOKATION}</div>
+                                </f:if>
+                                <f:if condition="{item.BEMAERK}">
+                                    <div class="col-12 col-sm-2">
+                                        <f:translate key="paging.remarks" />
+                                    </div>
+                                    <div class="col-12 col-sm-10">{item.BEMAERK}</div>
+                                </f:if>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-4">
                             <f:if condition="{item.FOTOURL}">
-                                <div class="contact-right">
+                                <div class="staff-image">
                                     <img src="{item.FOTOURL}" class="img-fluid" alt="">
                                 </div>
                             </f:if>
-                        </f:comment>
-                        <dt class="col-12 col-sm-2">
-                            <f:translate key="paging.name" />
-                        </dt>
-                        <dd class="col-12 col-sm-10">{item.PERSON_FORNAVN} {item.PERSON_EFTERNAVN}</dd>
-                        <f:if condition="{item.ANSAT_UOFF_STIL_TEKST}">
-                            <dt class="col-12 col-sm-2">
-                                <f:translate key="paging.title" />
-                            </dt>
-                            <dd class="col-12 col-sm-10">{item.ANSAT_UOFF_STIL_TEKST}</dd>
-                        </f:if>
-                        <f:if condition="{item.ANSAT_FUNKTION}">
-                            <dt class="col-12 col-sm-2">
-                                <f:translate key="paging.function" />
-                            </dt>
-                            <dd class="col-12 col-sm-10">{item.ANSAT_FUNKTION}</dd>
-                        </f:if>
-                        <f:if condition="{item.ANSAT_PURE_DK}">
-                            <dt class="col-12 col-sm-2">
-                                <f:translate key="paging.profile" />
-                            </dt>
-                            <dd class="col-12 col-sm-10">
-                                <a href="{item.ANSAT_PURE_DK}">
-                                    <f:translate key="paging.research" />
-                                </a>
-                            </dd>
-                        </f:if>
-                        <f:if condition="{item.STED_NAVN_SAMLET}">
-                            <dt class="col-12 col-sm-2">
-                                <f:translate key="paging.unit" />
-                            </dt>
-                            <dd class="col-12 col-sm-10">{item.STED_NAVN_SAMLET}</dd>
-                        </f:if>
-                        <f:if condition="{item.ANSAT_ARB_EMAIL}">
-                            <dt class="col-12 col-sm-2">
-                                <f:translate key="paging.email" />
-                            </dt>
-                            <dd class="col-12 col-sm-10"><a href="mailto:{item.ANSAT_ARB_EMAIL}">{item.ANSAT_ARB_EMAIL}</a></dd>
-                        </f:if>
-                        <f:if condition="{item.ANSAT_MOBIL}">
-                            <dt class="col-12 col-sm-2">
-                                <f:translate key="paging.cellphone" />
-                            </dt>
-                            <dd class="col-12 col-sm-10"><a href="tel:{item.ANSAT_MOBIL}">
-                                    <ku:Format.PhoneNumber phoneNumber="{item.ANSAT_MOBIL}" /></a></dd>
-                        </f:if>
-                        <f:if condition="{item.ANSAT_ARB_TLF}">
-                            <dt class="col-12 col-sm-2">
-                                <f:translate key="paging.phone" />
-                            </dt>
-                            <dd class="col-12 col-sm-10"><a href="tel:{item.ANSAT_ARB_TLF}">
-                                    <ku:Format.PhoneNumber phoneNumber="{item.ANSAT_ARB_TLF}" /></a></dd>
-                        </f:if>
-                        <f:if condition="{item.ANSAT_TLF_SEKR}">
-                            <dt class="col-12 col-sm-2">
-                                <f:translate key="paging.secretary" />
-                            </dt>
-                            <dd class="col-12 col-sm-10">
-                                <a href="tel:{item.ANSAT_TLF_SEKR}">
-                                    <ku:Format.PhoneNumber phoneNumber="{item.ANSAT_TLF_SEKR}" />
-                                </a>
-                            </dd>
-                        </f:if>
-                        <f:if condition="{item.ANSAT_WWW}">
-                            <dt class="col-12 col-sm-2">
-                                <f:translate key="paging.website" />
-                            </dt>
-                            <dd class="col-12 col-sm-10"><a href="{item.ANSAT_WWW}">{item.ANSAT_WWW}</a></dd>
-                        </f:if>
-                        <f:if condition="{item.ANSAT_ADRESSE}">
-                            <dt class="col-12 col-sm-2">
-                                <f:translate key="paging.address" />
-                            </dt>
-                            <dd class="col-12 col-sm-10">{item.ANSAT_ADRESSE}</dd>
-                        </f:if>
-                        <f:if condition="{item.LOKATION}">
-                            <dt class="col-12 col-sm-2">
-                                <f:translate key="paging.location" />
-                            </dt>
-                            <dd class="col-12 col-sm-10">{item.LOKATION}</dd>
-                        </f:if>
-                        <f:if condition="{item.BEMAERK}">
-                            <dt class="col-12 col-sm-2">
-                                <f:translate key="paging.remarks" />
-                            </dt>
-                            <dd class="col-12 col-sm-10">{item.BEMAERK}</dd>
-                        </f:if>
-                    </dl>
+                        </div>
+                    </div>
                 </li>
             </f:for>
         </ul>
