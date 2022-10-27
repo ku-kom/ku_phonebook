@@ -134,7 +134,7 @@
         </trans-unit>
         <trans-unit id="paging.remarks" resname="paging.remarks">
             <source>Remarks</source>
-            <target>Bemærkninger</target>
+            <target>Bemærkning</target>
         </trans-unit>
         </body>
     </file>
