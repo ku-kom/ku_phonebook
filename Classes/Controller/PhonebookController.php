@@ -19,8 +19,9 @@ class PhonebookController extends ActionController
     /**
      * Initiate the RequestFactory.
      */
+    
     public function __construct(
-        protected readonly RequestFactory $requestFactory,
+        private readonly RequestFactory $requestFactory,
     ) {
     }
 
