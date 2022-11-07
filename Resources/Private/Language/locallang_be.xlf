@@ -13,7 +13,7 @@
             <source>Items per page</source>
         </trans-unit>
         <trans-unit id="title" resname="title">
-            <source>KU directory of employees</source>
+            <source>KU phonebook</source>
         </trans-unit>
         <trans-unit id="description" resname="description">
             <source>KU directory of employees</source>

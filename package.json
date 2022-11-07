@@ -1,6 +1,6 @@
 {
     "name": "ku_phonebook",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Sitepackage for the project \"KU phonebook\" ",
     "main": "Resources/Public/JavaScript/Dist/ku-phonebook.min.js",
 	"scripts": {
@@ -24,11 +24,11 @@
     "author": "Nanna Ellegaard",
     "license": "ISC",
     "devDependencies": {
-		"autoprefixer": "^10.4.12",
+		"autoprefixer": "^10.4.13",
 		"postcss": "^8.4.18",
 		"postcss-cli": "^10.0.0",
-		"cssnano": "^5.1.13",
-		"eslint": "^8.26.0",
+		"cssnano": "^5.1.14",
+		"eslint": "^8.27.0",
 		"globcat": "^2.0.1",
 		"npm-run-all": "^4.1.5",
 		"onchange": "^7.1.0",
