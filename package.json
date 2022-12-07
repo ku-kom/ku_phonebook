@@ -8,7 +8,7 @@
 		"minify:css": "postcss \"Resources/Public/Css/Dist/ku-phonebook.css\" --config Build/postcss.config.js \"Resources/Public/Css/Dist/*.css\" \"!Resources/Public/Css/Dist/*.min.css\" --output \"Resources/Public/Css/Dist/ku-phonebook.min.css\"",
 		"concat:js": "globcat \"Resources/Public/JavaScript/Src/**/*.js\" --output \"Resources/Public/JavaScript/Dist/ku-phonebook.js\"",
 		"lint:js": "eslint --cache --cache-location .cache/.eslintcache",
-		"minify:js": "terser --compress passes=2 --toplevel --mangle-props --comments \"/^!/\" --source-map \"root='Resources/Public/JavaScript/Dist',url='ku-phonebook.min.js.map'\" --output \"Resources/Public/JavaScript/Dist/ku-phonebook.min.js\" \"Resources/Public/JavaScript/Dist/ku-phonebook.js\"",
+		"minify:js": "terser \"Resources/Public/JavaScript/Dist/ku-phonebook.js\" --output \"Resources/Public/JavaScript/Dist/ku-phonebook.min.js\" --compress passes=2 --toplevel --mangle-props --source-map \"url='ku-phonebook.min.js.map'\"",
 		"build:js": "npm-run-all lint:js && npm-run-all concat:js && npm-run-all minify:js",
 		"build:css": "npm-run-all concat:css && npm-run-all minify:css",
 		"watch:js": "onchange \"Resources/Public/JavaScript/Src/*.js\" -- npm-run-all build:js",
