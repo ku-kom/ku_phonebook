@@ -32,4 +32,4 @@ ExtensionUtility::configurePlugin(
 );
 
 // KU phonebook Viewhelper namespace
-$GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces']['ku_phonebook'] = ['UniversityOfCopenhagen\KuPhonebook\ViewHelpers'];
+$GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces']['kuPhonebook'] = ['UniversityOfCopenhagen\KuPhonebook\ViewHelpers'];

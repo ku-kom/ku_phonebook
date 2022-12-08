@@ -1,4 +1,5 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+
 <f:if condition="{employee} > 0">
     <f:then>
         <ul class="list-unstyled my-md-2 my-lg-3 staff-list">
@@ -52,14 +53,14 @@
                                         <f:translate key="paging.cellphone" />
                                     </div>
                                     <div class="col-12 col-sm-10"><a href="tel:{item.ANSAT_MOBIL}">
-                                            <ku:Format.PhoneNumber phoneNumber="{item.ANSAT_MOBIL}" /></a></div>
+                                            <kuPhonebook:Format.PhoneNumber phoneNumber="{item.ANSAT_MOBIL}" /></a></div>
                                 </f:if>
                                 <f:if condition="{item.ANSAT_ARB_TLF}">
                                     <div class="col-12 col-sm-2">
                                         <f:translate key="paging.phone" />
                                     </div>
                                     <div class="col-12 col-sm-10"><a href="tel:{item.ANSAT_ARB_TLF}">
-                                            <ku:Format.PhoneNumber phoneNumber="{item.ANSAT_ARB_TLF}" /></a></div>
+                                            <kuPhonebook:Format.PhoneNumber phoneNumber="{item.ANSAT_ARB_TLF}" /></a></div>
                                 </f:if>
                                 <f:if condition="{item.ANSAT_TLF_SEKR}">
                                     <div class="col-12 col-sm-2">
@@ -67,7 +68,7 @@
                                     </div>
                                     <div class="col-12 col-sm-10">
                                         <a href="tel:{item.ANSAT_TLF_SEKR}">
-                                            <ku:Format.PhoneNumber phoneNumber="{item.ANSAT_TLF_SEKR}" />
+                                            <kuPhonebook:Format.PhoneNumber phoneNumber="{item.ANSAT_TLF_SEKR}" />
                                         </a>
                                     </div>
                                 </f:if>
