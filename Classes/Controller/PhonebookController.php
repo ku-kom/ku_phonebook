@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace UniversityOfCopenhagen\KuPhonebook\Controller;
 
-use UniversityOfCopenhagen\KuPhonebook\Service;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Http\RequestFactory;
